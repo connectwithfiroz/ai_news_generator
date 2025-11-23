@@ -1,0 +1,377 @@
+{
+    "request_url" : "https://newsdata.io/api/1/latest?apikey=pub_fcfead52b05f46a09df64514232ea707&country=in&language=hi&category=health&image=1&video=0",
+  "status": "success",
+  "totalResults": 80,
+  "results": [
+    {
+      "article_id": "a0ba4a5b54169575e7b65060bd95b1ed",
+      "link": "https://www.bhaskar.com/entertainment/bollywood/news/manoj-bajpayee-the-family-man-3-136486403.html",
+      "title": "रैपिड फायर राउंड:फैमिली मैन 3 के सेट पर क्यों पड़ी शारिब को मनोज बाजपेयी से डांट, निम्रत ने बताया अपनी सीक्रेट नोटबुक का राज",
+      "description": "द फैमिली मैन 3 की स्टारकास्ट ने हाल ही में दैनिक भास्कर से खास बातचीत की। इस दौरान टीम ने रैपिड फायर राउंड में कुछ मजेदार जवाब दिए और बताया कि सेट पर सबसे पहले कौन रेडी हो जाता है। इसके अलावा टीम ने शूटिंग के दौरान हुई कुछ यादगार और अच्छी बातें भी शेयर कीं। क्या मनोज सर सेट पर सबसे जल्दी रेडी होते हैं? प्रियामणि: हां, बिल्कुल सही। मनोज- यह बात बिल्कुल सही है। जैसे ही मैं सेट पर पहुंचता हूं, सबसे पहले रेडी हो जाता हूं। मैं ऐसा इसलिए करता हूं ताकि बाद में जल्दीबाजी न करनी पड़े। इसलिए हमेशा पहले ही रेडी हो जाता हूं। क्या शारिब हर इमोशनल सीन से पहले कॉमेडी करते हैं? डीके: एक्शन बोलने तक यह लगातार कॉमेडी करता रहता है। मनोज: हां, एक-दो बार तो मैं गुस्सा भी हुआ हूं। मैंने इसे एक बार बहुत डांटा था। मैं कोई गंभीर सीन कर रहा था, तभी इसने कॉमेडी कर दी। प्रियामणि दूसरे टेक से पहले मैं डायरेक्टर को अपना सुझाव देती हैं? प्रियामणि- नहीं बिल्कुल नहीं क्या निम्रत अपने किरदार के लिए एक सीक्रेट नोटबुक रखती हैं? निम्रत: नहीं, नोटबुक तो रखती हूं, लेकिन यह कोई सीक्रेट नोटबुक नहीं है। क्या राज और डीके इम्प्रोवाइजेशन करने से पहले मना करते हैं? प्रियामणि- नहीं बिल्कुल नहीं। मनोज- इतनी आजादी किसी सेट पर नहीं होती जितनी इनके सेट पर होती है। वे हमेशा कहते हैं, जो भी आप कर रहे हैं वही करिए। बाकी उसको फिल्टर करना हमारा काम है। आप बस अपना काम आराम से कीजिए। अगर आप द फैमिली मैन में नहीं होते, तो किसका किरदार निभाते जेके या रुक्मा? मनोज: अगर मैं ये दोनों सीजन नहीं करता, तो मैं रुक्मा का किरदार निभाता। शारिब अगर आप विलेन होते तो किस तरह के विलेन होते और उसका क्या नाम होता? मनोज- मीरा का रोल निभाता।",
+      "content": "ONLY AVAILABLE IN PAID PLANS",
+      "keywords": [
+        "manoj bajpayee",
+        "the family man 3"
+      ],
+      "creator": [
+        "दैनिक भास्कर"
+      ],
+      "language": "hindi",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "health"
+      ],
+      "pubDate": "2025-11-23 01:30:00",
+      "pubDateTZ": "UTC",
+      "image_url": "https://images.bhaskarassets.com/thumb/1000x1000/web2images/521/2025/11/22/comp-1_1763820185.gif",
+      "video_url": null,
+      "source_id": "bhaskar_hindi",
+      "source_name": "Bhaskar",
+      "source_priority": 34179,
+      "source_url": "https://www.bhaskar.com",
+      "source_icon": "https://n.bytvi.com/bhaskar_hindi.png",
+      "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+      "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+      "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+      "duplicate": false
+    },
+    {
+      "article_id": "0e5839afcb433459418d7fccb7b6e17f",
+      "link": "https://www.bhaskar.com/entertainment/bollywood/news/durgavati-is-the-most-unique-in-ganga-mai-136486179.html",
+      "title": "‘गंगा माई.. ’ में सबसे अलग दुर्गावती:बिना ऑडिशन बनीं ‘रामायणम्’ की कौशल्या, इंदिरा कृष्णन बोलीं- मुझ पर ‘दृश्यम’, ‘बाहुबली’ जैसे रोल सूट करते हैं",
+      "description": "एक्ट्रेस इंदिरा कृष्णन की हालिया रिलीज फिल्म ‘जटाधरा’ है। इसके अलावा वह टीवी शो ‘गंगा माई की बेटियां' में ठकुराइन दुर्गावती के दमदार किरदार में दिख रही हैं। आगे वह ‘रामायणम्' में कौशल्या की भूमिका में दिखेंगी। ‘रामायणम्' की खास बात यह है कि इस फिल्म के लिए बिना ऑडिशन दिए ही सलेक्ट हो गईं। दैनिक भास्कर से खास बातचीत के दौरान एक्ट्रेस ने बताया कि उन्हें ‘दृश्यम’ और ‘बाहुबली’ जैसी फिल्मों के सशक्त रोल अधिक सूट करते हैं। पेश है इंदिरा कृष्णन से हुई बातचीत के कुछ और अंश.. ‘गंगा माई की बेटियां' में आपके किरदार ‘ठकुराइन दुर्गावती' की क्या खासियत है? दुर्गावती का किरदार पूरे शो में सबसे ज्यादा शेड्स वाला है। यह किरदार केवल नेगेटिव नहीं है, इसमें इमोशनल शेड्स भी हैं, गुस्सा है, एक जिद है, और यह अपनी बात पर एकदम जस्टिस करने वाली है, भले ही वह 110 लाइन की बात को एक लाइन में बोल दे। यह एक बहुत ही वजनदार रोल है। मैं इसे पूरी तरह नेगेटिव नहीं कहूंगी, पर हां, एक मां कभी-कभी स्वार्थी भी हो जाती है, कहीं-कहीं उसे दर्द भी होता है और यह सब शायद आगे शो में आएगा। यह किरदार बहुत शानदार है। इस शो का फील अलग है और इसमें एक नयापन है। ‘गंगा माई....’ में एक साथ तीन-चार कहानियां चल रही हैं और हर किरदार दूसरे किरदार से इंटरलिंक है। यह शो एक बहुत हिट कन्नड़ शो ‘पुट्टक्कना मक्कलु’ का रीमेक है, जो दर्शकों को एक फ्रेशनेस दे रहा है। दुर्गावती के किरदार के लिए कोई प्रेरणा ली या कुछ हद तक वैसी ही शख्सियत हैं? दुर्गावती के किरदार में बहुत गहराई है। वह अपने बेटे को बहुत चाहती है। उसके अपने सिद्धांत हैं। वह गांव की मुखिया (पंचायत की हेड) भी है। यह किरदार दिखाता है कि एक औरत कैसे घर और बाहर दोनों को अच्छे से संभालती है। मुझे लगता है कि किसी शो में इतने शेड्स किसी और किरदार को नहीं मिले हैं। हां, मैं असल जिंदगी में भी थोड़ी बोल्ड हूं। अगर मुझे कोई इंसान या बात पसंद नहीं आती, तो मैं उसे सामने से समझाती हूं। मैं पीठ पीछे कभी बात नहीं करती। मेरे कुछ अनुशासन और सिद्धांत हैं और शायद इसी वजह से मुझे इंडस्ट्री में 24 साल की कंसिस्टेंसी मिली है। मुझे लगता है, आजकल इंडस्ट्री के लोग डिसिप्लिन और प्रिंसिपल भूल गए हैं। आज इंडस्ट्री में कलाकारों में आपको किस चीज की कमी दिखती है? आजकल के एक्टर्स में मैंने देखा है कि वे सिर्फ अपनी लाइनें या डायलॉग्स पढ़ते हैं, पूरा सीन नहीं पढ़ते। इसकी वजह से किरदार उभर कर नहीं आता। अगर आप पूरा सीन पढ़कर परफॉर्म करते हैं, तो वह किरदार पूरी तरह जीवंत हो उठता है और आप बेहतर इंटरैक्शन कर सकते हैं। यह मैंने अपने सीनियर एक्टर्स और नेशनल स्कूल ऑफ ड्रामा के लोगों से सीखा है। मैं खुद भी पूरा सीन पढ़े बिना काम नहीं करती, भले ही मेरी कोई लाइन न हो। एक एक्टर को क्रिएटिवली इन्वॉल्व होना चाहिए और थोड़ी छूट मिलनी चाहिए ताकि वह अपने किरदार को एक अलग मुकाम पर ले जाए। ‘रामायणम्' में कौशल्या का रोल आपको कैसे मिला? इससे पहले ‘एनिमल' में मैंने रश्मिका मंदाना की मां का छोटा-सा रोल किया था। ‘रामायणम्' में मैंने रणबीर के साथ कौशल्या का किरदार निभाया है। मेरा रास्ता ‘एनिमल' फिल्म से ही खुला था। मैं जब रणबीर कपूर से मिली तो उन्होंने भी खुशी जताई कि मैं यह रोल कर रही हूं। मैंने कोई ऑडिशन नहीं दिया था। मेकर्स ने मुझे देखकर ही बोला था कि उन्हें इंदिरा जी ही चाहिए। मैंने केवल लुक टेस्ट दिया था, जिसमें मैं कौशल्या के रूप में एकदम परफेक्ट लगी। डायरेक्टर नितेश तिवारी जी का विजन और डायरेक्शन सेंस बहुत बढ़िया है, जिसकी वजह से मैंने यह किरदार बहुत स्मूथली निभाया। मेरे हिस्से की शूटिंग पूरी तरह से कंप्लीट हो चुकी है। मैं अलग-अलग तरह के किरदार करना चाहती हूं, मुझे लगता है कि लोगों को लाइफटाइम अचीवमेंट अवार्ड मिलता है और मुझे लाइफटाइम सारे रोल्स करने हैं, चाहे वे छोटे हों या बड़े, पर एक स्केच्ड कैरेक्टर निभाना चाहती हूं। मैं अपने दर्शकों को हमेशा कुछ नया देती हूं, जैसे मैंने ‘कृष्णादासी' में बहुत फेमस और खूबसूरत रोल किया था, जिसके लिए मुझे दादा साहेब फाल्के अवॉर्ड भी मिला था। ‘रामायणम्' के सेट पर रणबीर कपूर के साथ आपका अनुभव कैसा रहा? रणबीर कपूर के साथ ऑनस्क्रीन और ऑफस्क्रीन दोनों तरह के रिश्ते अच्छे हैं। ऑफस्क्रीन हम बहुत बातें करते थे और उनसे मैंने सिनेमा के बारे में बहुत कुछ सीखा। उनका समर्पण, उनके सिद्धांत और उनकी ईमानदारी सीन में झलकती है। वे एक्टिंग में जोर नहीं डालते बल्कि बहुत सरलता व सहजता से काम करते हैं। वे अपने सह-कलाकारों को भी क्यू देते हैं और हर चीज में शामिल रहते हैं। वह बहुत सकारात्मकता फैलाने वाले और दयालु इंसान हैं। क्या अब फिल्मों की ओर अधिक रुख कर लिया है? नहीं ऐसा नहीं है। मैं टीवी कभी नहीं छोडूंगी, क्योंकि टीवी ने हमेशा मुझे इज्जत दी है और मेरा रोजी-रोटी इसी से चलती है लेकिन हां, अगर फिल्में मिलेंगी तो मैं फिल्में भी करूंगी। मैं एक आर्टिस्ट हूं और मेरे लिए बड़ा परदा या छोटा परदा में कोई फर्क नहीं है। मैंने जितनी मेहनत छोटे परदे पर की है, उतनी ही मेहनत बड़े परदे पर भी की है। हालिया रिलीज साउथ की फिल्म ‘जटाधारा' के बारे में बताइए? ‘जटाधारा' हाल ही में रिलीज हुई है और उसे बहुत अच्छा रिस्पॉन्स मिल रहा है। मुझे लगता है कि इंडस्ट्री में मेरे 24 साल के अनुभव का फायदा अब फिल्मों में मिल रहा है। हालांकि ‘जटाधारा' में रोल उतना पावरफुल नहीं था लेकिन मैं शो की प्राइम कास्ट में थी और काफी दिख रही हूं। मुझे लगता है कि मैं थोड़ी अंडररेटेड एक्ट्रेस रही हूं और बड़े पैमाने पर रोल्स कर सकती हूं। क्या ‘जटाधारा' के बाद साउथ से और ऑफर आने की उम्मीद है? हां, मुझे ‘जटाधारा' के रिस्पॉन्स के बाद ऑफर आने की उम्मीद है। हालांकि अभी तक तो नहीं आए हैं लेकिन मुझे लगता है कि जरूर आएंगे। फिलहाल, मैं ‘गंगा मैया की बेटियां' की शूटिंग में व्यस्त हूं। साउथ इंडस्ट्री में काम करने का अनुभव कैसा रहा? साउथ इंडस्ट्री में लोग बहुत अनुशासित हैं। वहां आपको अच्छे मौके मिलते हैं, आप अच्छे पैसे और नाम कमाते हैं और अच्छे ग्रुप के साथ काम करते हैं। मैं ‘दृश्यम’ या ‘बाहुबली’ जैसी कोई फिल्म करना चाहती हूं, जहां हर किरदार महत्वपूर्ण हो, जैसे ‘बाहुबली’ में राम्या कृष्णन जी का रोल। मेरा औरा, फेस और बॉडी लैंग्वेज मजबूत किरदारों के लिए अधिक सूट करता है।",
+      "content": "ONLY AVAILABLE IN PAID PLANS",
+      "keywords": [
+        "indira krishnan",
+        "south movies",
+        "interview",
+        "bollywood news"
+      ],
+      "creator": [
+        "दैनिक भास्कर"
+      ],
+      "language": "hindi",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "health"
+      ],
+      "pubDate": "2025-11-23 01:00:00",
+      "pubDateTZ": "UTC",
+      "image_url": "https://images.bhaskarassets.com/thumb/1000x1000/web2images/521/2025/11/22/eod-32_1763824162.gif",
+      "video_url": null,
+      "source_id": "bhaskar_hindi",
+      "source_name": "Bhaskar",
+      "source_priority": 34179,
+      "source_url": "https://www.bhaskar.com",
+      "source_icon": "https://n.bytvi.com/bhaskar_hindi.png",
+      "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+      "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+      "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+      "duplicate": false
+    },
+    {
+      "article_id": "f75b0ff72af0161366c689c1848d363e",
+      "link": "https://www.bhaskar.com/entertainment/bollywood/news/fatima-sana-shaikh-suffered-an-epileptic-attack-136486225.html",
+      "title": "शूटिंग के दौरान फातिमा को पड़ा था मिर्गी का दौरा:विजय वर्मा बोले- मैं असहाय महसूस कर रहा था; दोनों गुस्ताख इश्क में आएंगे नजर",
+      "description": "एक्टर विजय वर्मा और फातिमा सना शेख 'गुस्ताख इश्क' के जरिए जल्द ही बड़े पर्दे पर नजर आने वाले हैं। फिलहाल विजय और फातिमा फिल्म के प्रमोशन के लेकर बिजी हैं। इसी दौरान उन्होंने एक इंटरव्यू में मेंटल हेल्थ पर खुलकर बात की है। इसके अलावा विजय ने फातिमा की परमिशन से गुस्ताख इश्क के सेट पर हुए उनके मेडिकल कंडीशन एपिलेप्सी (मिर्गी) का किस्सा शेयर किया। दरअसल, दोनों ही स्टार मैशेबल इंडिया के पॉडकास्ट में पहुंचे थे। यहां पर विजय ने बताया कि कैसे फातिमा को पहले से पता चल गया था कि उनकी तबीयत बिगड़ने वाली है। विजय कहते हैं- ‘जब हम शूट कर रहे थे तो इसने मुझे और कुछ क्रू मेंबर्स को पहले ही बता दिया था कि अगर अटैक आता है तो हमें क्या करना है। राइट साइड करके लेटाना है। सिर के नीचे तकिया रखना है। मुंह पर कुछ नहीं होना चाहिए। सांस लेने के लिए स्पेस होना चाहिए। मुझे लगा कि शायद वो डराने के लिए ऐसा बोल रही है। उसी रात पैकअप के समय मैं शूटिंग के बीच में बाहर बैठकर किताब पढ़ रहा था, तभी मुझे अचानक एक आवाज सुनाई दी। मैं अंदर गया, तब तक फातिमा को दौरा पड़ चुका था।’ वो आगे कहते हैं- 'उस वक्त मैं खुद को बहुत कमजोर और असहाय महसूस कर रहा था। मुझे समझ नहीं आ रहा था कि मैं क्या करूं। मुझे वो सारी बातें याद आईं जो उसने मुझे बताई थीं। हमने शूट पर एक बेड खाली किया और उसे लेटा दिया। हवा आने की जगह बनाई। आसपास बहुत लोग थे, उन्हें कम करा दिया। मैं बस उसके सिर पर हाथ रख पास बैठ गया। ये कुछ देर तक चला। फिर हम उसे कार में होटल ले गए। जब वह होटल आई तो होश में थी, लेकिन उसे कुछ याद नहीं था।' बता दें कि फातिमा सना शेख ने रिया चक्रवर्ती के पॉडकास्ट में पहली बार मिर्गी के बारे में खुलकर बात की थी। उन्होंने बताया था कि कैसे इस बीमारी के साथ जीना आसान नहीं है। विजय और फातिमा के वर्कफ्रंट की बात करें तो एक्टर पिछले साल नेटफ्लिक्स की फिल्म 'मर्डर मुबारक' और सीरीज 'IC 814:द कंधार हाईजैक' में नजर आए थे। वहीं, फातिमा हाल ही में नेटफ्लिक्स की फिल्म 'आप जैसा कोई' और 'मेट्रो इन दिनों' में दिखी थीं।",
+      "content": "ONLY AVAILABLE IN PAID PLANS",
+      "keywords": [
+        "naseeruddin shah",
+        "manish malhotra’s new production",
+        "seizure",
+        "vijay varma",
+        "fatima sana shaikh",
+        "stage5 production"
+      ],
+      "creator": [
+        "दैनिक भास्कर"
+      ],
+      "language": "hindi",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "health"
+      ],
+      "pubDate": "2025-11-22 23:30:00",
+      "pubDateTZ": "UTC",
+      "image_url": "https://images.bhaskarassets.com/thumb/1000x1000/web2images/521/2025/11/22/eod-14_1763819128.gif",
+      "video_url": null,
+      "source_id": "bhaskar_hindi",
+      "source_name": "Bhaskar",
+      "source_priority": 34179,
+      "source_url": "https://www.bhaskar.com",
+      "source_icon": "https://n.bytvi.com/bhaskar_hindi.png",
+      "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+      "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+      "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+      "duplicate": false
+    },
+    {
+      "article_id": "56cb02032508d2d51edd2e4b6c90b33d",
+      "link": "https://www.bhaskar.com/entertainment/bollywood/news/turkish-singer-bergen-interesting-facts-halis-serbest-136485640.html",
+      "title": "तुर्किये की सिंगर पर पति ने करवाया एसिड अटैक:बुरी तरह जलीं, एक आंख खोकर भी गाती रहीं, आखिर में गोली मारकर हत्या कर दी गई",
+      "description": "31 अक्टूबर 1982 की बात है। तुर्किये की जानी-मानी सिंगर बर्गेन अपनी मां के साथ टैक्सी का इंतजार कर रही थीं। तभी अचानक उनके सामने एक शख्स आया, जिसने अपना चेहरा नकाब से ढक रखा था। बर्गेन कुछ कह पातीं, उससे पहले ही वह शख्स उनके ऊपर एसिड फेंक कर भाग गया। आनन-फानन में बर्गेन को अस्पताल में भर्ती कराया गया। उनका लगातार 45 दिन तक इलाज चला। बर्गेन बुरी तरह जल गई थीं और उनकी एक आंख भी खराब हो गई थी। बचना मुश्किल ही नहीं, लगभग नामुमकिन था, लेकिन मां की दुआएं और फैंस का प्यार उन्हें मौत के मुंह से वापस ले आया। लेकिन फिर बर्गेन की गोली मारकर हत्या भी कर दी गई। इस घटना के बाद हर कोई सहम गया। सभी के मन में सवाल था कि आखिर सिंगर का किसी से ऐसा क्या विवाद था कि उनके ऊपर एसिड फेंका गया और जब वह इससे भी बच गईं तो उन्हें बीच कॉन्सर्ट में गोली मारकर हत्या कर दी गई। पुलिस ने मामले का खुलासा किया तो हर कोई हैरान रह गया। आज अनसुनी दास्तान के 3 चैप्टर में पढ़िए तुर्किये की जानी-मानी सिंगर बर्गेन की हत्या की कहानी... बर्गेन का जन्म 15 जुलाई 1958 को तुर्किये में हुआ था। वह सात बच्चों में सबसे छोटी थीं। उनका बचपन प्यार, हंसी और संगीत से भरा हुआ था। घर में पैसे की कमी थी, लेकिन परिवार खुशहाल था और सभी उन्हें बहुत प्यार करते थे। हालांकि परिस्थितियां तब बदल गईं जब बर्गेन के माता-पिता का तलाक हो गया और परिवार बिखर गया। इसके बाद वह अपनी मां के साथ अंकारा चली गईं, जहां उन्होंने अपनी जिंदगी की नई शुरुआत की। बर्गेन का बचपन संगीत के बीच बीता इसलिए उन्होंने इसी में करियर बनाने का फैसला लिया। अंकारा आने के बाद उन्होंने संगीत सीखना शुरू किया। बर्गेन को गाने का अच्छा हुनर था और वह मैंडोलिन भी बहुत अच्छी तरह बजाती थीं। उनके टीचर्स और दोस्त हमेशा उनके टैलेंट की तारीफ करते। बर्गेन ने भी ठान लिया कि उन्हें सिंगर बनना है। इसके लिए उन्होंने अंकारा स्टेट कंजर्वेटरी में एडमिशन लिया और पियानो विभाग में पहला स्थान हासिल किया। धीरे-धीरे बर्गेन का संगीत पूरे तुर्किये में प्रसिद्ध हो गया, लेकिन बुलंदियों तक पहुंचना अभी बाकी था। उनकी आर्थिक स्थिति ठीक नहीं थी इसलिए उन्होंने अपनी पढ़ाई छोड़कर तुर्किये के संघीय डाकघर (PTT) में नौकरी करना शुरू किया। इसी बीच 1977 में खबरें सामने आईं कि बर्गेन ने शादी कर ली है और उनके बच्चे भी हैं। हालांकि परिवार ने इन खबरों को महज अफवाहें बताया। बर्गेन अक्सर दोस्तों के साथ नाइटक्लब जाती थीं। एक रात जब वह दोस्तों के साथ एक क्लब में थीं और गाना गा रही थीं, तभी क्लब के मालिक को उनकी आवाज इतनी पसंद आई कि उन्होंने बर्गेन को क्लब में हमेशा के लिए गाने का ऑफर दे दिया। बर्गेन ने तुरंत इसे स्वीकार कर लिया। उन्होंने क्लब बैंड में शामिल होकर तुर्किये क्लासिकल म्यूजिक और पॉप गाना शुरू किया। उनकी आवाज में इतनी मिठास थी कि दर्शक मंत्रमुग्ध हो जाते थे। धीरे-धीरे उन्हें वह कामयाबी मिलने लगी जिसकी चाह हर कोई करता है। इसी दौरान उनकी मुलाकात हालिस सर्बेस्ट नाम के एक व्यक्ति से हुई, जिसने उनकी जिंदगी हमेशा के लिए बदल दी। हालिस पहले से ही शादीशुदा था और उसके तीन बच्चे थे, लेकिन बर्गेन की सुंदरता के सामने वह खुद को रोक नहीं पाया। वह हर रात बर्गेन को फूल भेजता और क्लब में उनके प्रोग्राम देखने आता था। बर्गेन भी धीरे-धीरे उसकी ओर खिंचने लगीं और दोनों का रिश्ता बन गया। हालिस बर्गेन से शादी करके नई जिंदगी शुरू करना चाहता था। शुरुआत में बर्गेन थोड़ी झिझकीं, लेकिन अंततः वह मान गईं। दोनों ने शादी की, लेकिन यह शादी झूठी साबित हुई और बर्गेन को लगा कि उन्हें धोखा मिला है। आखिरकार बर्गेन ने फैसला किया कि वह हालिस से दूर हो जाएंगी। हालांकि हालिस उन्हें जाने नहीं देता था। धीरे-धीरे हालिस ने घरेलू हिंसा भी शुरू कर दी, जिससे बर्गेन की जिंदगी नर्क जैसी हो गई। ऐसे में उन्होंने हालिस को छोड़कर अपनी मां के पास अंकारा लौटने का फैसला किया। अंकारा में बर्गेन ने दोबारा करियर शुरू करने का फैसला किया। उन्होंने नॉर्वे के शहर बर्गेन से प्रेरित होकर ही अपना नाम बर्गेन रखा, जबकि उनका असली नाम कुछ और था। उन्होंने फिर से नाइटक्लब में गाना शुरू किया और कई जानी-मानी हस्तियों के साथ मंच शेयर किया। बर्गेन की आवाज में ऐसा जादू था कि पूरा अंकारा उनकी ओर खिंचता चला गया। उनकी जिंदगी बदलने लगी और अधूरे सपने भी पूरे होने लगे, लेकिन उनके मन में कहीं न कहीं हालिस का डर भी था और प्यार भी। बर्गेन को यही उम्मीद थी कि शायद वह एक दिन बदल जाएगा। हालांकि वह दिन कभी नहीं आया। दूसरी तरफ हालिस लगातार बर्गेन का पीछा करता रहा और जान से मारने की धमकियां देता रहा। 31 अक्टूबर 1982 को बर्गेन अपनी मां के साथ टैक्सी का इंतजार कर रही थीं, तभी अचानक उनके सामने एक नकाबपोश व्यक्ति आकर खड़ा हो गया। बर्गेन को डर महसूस हुआ और उसी क्षण उस शख्स ने उनके ऊपर एसिड फेंक दिया। बर्गेन का चेहरा और आंखें जल गईं। जैसे-तैसे उन्हें अस्पताल में भर्ती कराया गया। बर्गेन ने 45 दिनों तक अस्पताल में मौत और जिंदगी के बीच संघर्ष किया। हमले की वजह से उनका चेहरा और शरीर जल गया था और उनकी आंखों की रोशनी चली गई थी। डॉक्टरों को उनकी जान बचाना भी मुश्किल लग रहा था। बर्गेन की मां, दोस्त और फैंस लगातार उनके ठीक होने के लिए प्रार्थना कर रहे थे। यही प्यार और समर्थन था जिसने बर्गेन को कठिन शारीरिक और मानसिक चोटों के बावजूद जीवित रखा। इस दौरान पुलिस ने हमलावर को पकड़ने के लिए जांच शुरू की। देश इस भयावह अपराध से हिल गया था और पुलिस पर दबाव था कि अपराधी को जल्द से जल्द गिरफ्तार किया जाए। आखिरकार पुलिस को सबूत मिले कि यह हमला किसी और ने नहीं, बल्कि बर्गेन के हसबैंड हालिस ने करवाया था। यह खबर सुनकर पूरे देश में सनसनी फैल गई। ये सोच ही बेहद डरावनी थी कि कोई व्यक्ति, जो कभी प्यार का दावा करता था, वो आज इतनी बेरहमी से हमला करवा सकता है। आखिरकार पुलिस ने हालिस को अरेस्ट कर लिया और अदालत ने उसे 13 साल जेल की सजा सुनाई। दूसरी ओर धीरे-धीरे बर्गेन उस भयानक एसिड हमले से ठीक होने लगीं। उन्होंने इस हमले को अपनी जिंदगी पर हावी नहीं होने दिया। एसिड अटैक में एक आंख खो देने के बावजूद बर्गेन ने गाना नहीं छोड़ा। उन्होंने मंच पर लौटकर अपने बालों की लट या विशेष डिजाइन वाले मेकअप से चोट छुपाते हुए फिर से गाना शुरू किया। बर्गेन ने गाने गाए और लिखे भी। उन्होंने कई एल्बम रिलीज किए। उनका संगीत उम्मीद की मिसाल बन गया। उन्होंने दिखाया कि कठिन समय को धैर्य और प्रयास से पार किया जा सकता है। बर्गेन ने अपने मंच का इस्तेमाल घरेलू हिंसा के खिलाफ जागरूकता फैलाने के लिए भी किया। संगीतकार झांगिस ओश्कर के सहयोग से बर्गेन ने 1983 में शानदार वापसी की। 1985 में बर्गेन ने अपना एल्बम एन्सन सीवियर्स जारी किया। यह एल्बम बहुत सफल रहा और बर्गेन की हिम्मत और प्रतिभा का प्रमाण बना। 1986 के अंत में उन्होंने अपना अगला एल्बम आशी नाकार्डिने रिलीज किया, जिसकी एक मिलियन से ज्यादा कॉपियां बिकीं और बर्गेन ने कई पुरस्कार भी जीते। यह उनके लिए एक बड़ी जीत थी। इतने कठिन समय के बाद बर्गेन ने अपनी जगह फिर से हासिल कर ली। 1987 में बर्गेन ने पहली बार एक्टिंग में कदम रखा और Woman of Pain फिल्म में काम किया। बर्गेन को लगा कि अब उनकी जिंदगी धीरे-धीरे सही दिशा में जा रही है।दूसरी ओर 1988 में हालिस जेल से रिहा हो गया। फिर दोनों ने समझौता किया और अप्रैल 1989 में तलाक ले लिया। लेकिन 14 अगस्त 1989 को जब बर्गेन अपना नया एल्बम यिलर अफेतमेज प्रमोट करने अदाना गईं, तभी हालिस ने उन पर गोली चला दी, जिससे उनकी मौत हो गई। इस हमले में बर्गेन की मां भी घायल हुईं। हालिस हत्या के बाद विदेश भाग गया, लेकिन जर्मनी में पकड़ा गया। उसे 15 साल जेल की सजा सुनाई गई, जिसे अच्छे व्यवहार के कारण घटाकर 3 साल कर दिया गया। जर्मनी और तुर्किये में 16 महीने की हिरासत को ध्यान में रखते हुए उसे केवल सात महीने जेल काटनी पड़ी।",
+      "content": "ONLY AVAILABLE IN PAID PLANS",
+      "keywords": [
+        "belgin sarılmışer",
+        "singer bergen acid story",
+        "turkish singer bergen murdered",
+        "turkish singer",
+        "singer bergen",
+        "halis serbest",
+        "turkish singer bergen"
+      ],
+      "creator": [
+        "दैनिक भास्कर"
+      ],
+      "language": "hindi",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "health"
+      ],
+      "pubDate": "2025-11-22 23:00:00",
+      "pubDateTZ": "UTC",
+      "image_url": "https://images.bhaskarassets.com/thumb/1000x1000/web2images/521/2025/11/22/eod-17_1763819116.gif",
+      "video_url": null,
+      "source_id": "bhaskar_hindi",
+      "source_name": "Bhaskar",
+      "source_priority": 34179,
+      "source_url": "https://www.bhaskar.com",
+      "source_icon": "https://n.bytvi.com/bhaskar_hindi.png",
+      "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+      "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+      "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+      "duplicate": false
+    },
+    {
+      "article_id": "2c1f54f94f6b5fbda4ac6b7d19ca78df",
+      "link": "https://www.bhaskar.com/local/rajasthan/jaipur/news/get-together-to-celebrate-the-success-of-the-sports-carnival-136487882.html",
+      "title": "स्पोट्‌र्स कार्निवल की सफलता को सेलिब्रेट करने के लिए गेट-टुगेदर",
+      "description": "हाल ही हुए इंटर क्लब स्पोर्ट्स कार्निवल की सफलता को सेलिब्रेट करने के लिए जयपुर क्लब के बैंक्वेट हॉल में गेट-टुगेदर पार्टी आयोजित की गई। क्लब के अध्यक्ष अजीत सक्सेना ने बताया कि इस विशेष शाम में जयपुर क्लब के साथ-साथ गोल्फ क्लब और जय क्लब की प्रबंध कार्यकारिणी और कई सदस्य शामिल हुए। पार्टी में गायक दिनेश वर्मा और अंजली ने गानों की प्रस्तुति दी। दोनों ने अपनी सुरीली प्रस्तुतियों से सभी का मनोरंजन किया। संगीत और मस्ती से भरी यह शाम सभी के लिए यादगार बन गई। कार्यक्रम के अंत में मानद सचिव हिमांशु सहगल ने स्पोर्ट्स कार्निवल को सफल बनाने में सहयोग करने वाले सभी सदस्यों, टीमों और अतिथियों का धन्यवाद कर कार्यक्रम का समापन किया।",
+      "content": "ONLY AVAILABLE IN PAID PLANS",
+      "keywords": [
+        "dainikbhaskar"
+      ],
+      "creator": [
+        "दैनिक भास्कर"
+      ],
+      "language": "hindi",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "health"
+      ],
+      "pubDate": "2025-11-22 22:36:38",
+      "pubDateTZ": "UTC",
+      "image_url": "https://images.bhaskarassets.com/thumb/1000x1000/web2images/521/2025/11/23/22cbhaskar-pg2-0_57235366-6c33-4b71-b887-d0e9c64030a5-large.jpg",
+      "video_url": null,
+      "source_id": "bhaskar_hindi",
+      "source_name": "Bhaskar",
+      "source_priority": 34179,
+      "source_url": "https://www.bhaskar.com",
+      "source_icon": "https://n.bytvi.com/bhaskar_hindi.png",
+      "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+      "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+      "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+      "duplicate": false
+    },
+    {
+      "article_id": "ee1799e3d22939864d77a9378f5f0777",
+      "link": "https://www.amarujala.com/uttar-pradesh/kanpur/two-players-from-kanpur-won-medals-in-the-senior-state-wrestling-championship-kanpur-news-c-362-1-ka11003-135851-2025-11-23",
+      "title": "Kanpur News: सीनियर स्टेट कुश्ती चैंपियनशिप में कानपुर के दो खिलाड़ियों ने जीते पदक",
+      "description": "सीनियर स्टेट कुश्ती चैंपियनशिप में कानपुर के दो खिलाड़ियों ने जीते पदक",
+      "content": "ONLY AVAILABLE IN PAID PLANS",
+      "keywords": null,
+      "creator": null,
+      "language": "hindi",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "top",
+        "health"
+      ],
+      "pubDate": "2025-11-22 20:29:44",
+      "pubDateTZ": "UTC",
+      "image_url": "https://staticimg.amarujala.com/assets/images/2021/10/25/kanpur_1635142999.jpeg?dpr=1.0&w=750",
+      "video_url": null,
+      "source_id": "amarujala",
+      "source_name": "Amar Ujala",
+      "source_priority": 55215,
+      "source_url": "https://www.amarujala.com",
+      "source_icon": "https://n.bytvi.com/amarujala.png",
+      "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+      "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+      "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+      "duplicate": false
+    },
+    {
+      "article_id": "14ee29106bb549b7ea9da5871843f69b",
+      "link": "https://www.amarujala.com/haryana/karnal/man-arrested-for-house-theft-karnal-news-c-18-knl1018-785810-2025-11-23",
+      "title": "Karnal News: घर में चोरी करने का आरोपी गिरफ्तार",
+      "description": "घर में चोरी करने का आरोपी गिरफ्तार",
+      "content": "ONLY AVAILABLE IN PAID PLANS",
+      "keywords": null,
+      "creator": null,
+      "language": "hindi",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "top",
+        "health"
+      ],
+      "pubDate": "2025-11-22 20:27:32",
+      "pubDateTZ": "UTC",
+      "image_url": "https://staticimg.amarujala.com/assets/images/2021/11/09/karnal_1636440329.jpeg?dpr=1.0&w=750",
+      "video_url": null,
+      "source_id": "amarujala",
+      "source_name": "Amar Ujala",
+      "source_priority": 55215,
+      "source_url": "https://www.amarujala.com",
+      "source_icon": "https://n.bytvi.com/amarujala.png",
+      "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+      "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+      "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+      "duplicate": false
+    },
+    {
+      "article_id": "64cdbd27032d000ff145dc060be7300b",
+      "link": "https://hindi.news18.com/news/lifestyle/health-how-to-make-soyabean-badi-at-home-know-its-health-benefits-protein-rich-food-soya-in-hindi-ws-n-9883042.html",
+      "title": "How to make soyabean badi: प्रोटीन से भरपूर सोयाबीन की बड़ी बनाने की विधि",
+      "description": "How to make soyabean badi at home: जो लोग नॉनवेज नहीं खाते हैं, उन्हें समझ नहीं आता है कि प्रोटीन की पूर्ति के लिए किस चीज का सेवन करना चाहिए. वैसे, आप दाल तो हर दिन खाते होंगे. दाल में भी प्रोटीन भरपूर होता है, लेकिन सोयाबीन में सबसे ज्यादा. आप सोयाबीन की बड़ियों को खुद भी घर पर बना सकते हैं. जानिए कैसे और क्या हैं सोयोबीन के सेवन के लाभ.",
+      "content": "ONLY AVAILABLE IN PAID PLANS",
+      "keywords": [
+        "हेल्थ एंड फिटनेस"
+      ],
+      "creator": [
+        "Anshumala"
+      ],
+      "language": "hindi",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "health"
+      ],
+      "pubDate": "2025-11-22 18:13:00",
+      "pubDateTZ": "UTC",
+      "image_url": "https://images.news18.com/ibnkhabar/uploads/2025/11/soyabean-badi-recipe-2025-11-24a590058c44a3e8d118ddcb27c06fbb-3x2.jpg",
+      "video_url": null,
+      "source_id": "hindinews18",
+      "source_name": "News 18 Hindi",
+      "source_priority": 4077,
+      "source_url": "https://hindi.news18.com",
+      "source_icon": "https://n.bytvi.com/hindinews18.png",
+      "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+      "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+      "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+      "duplicate": false
+    },
+    {
+      "article_id": "f385dfb78447c87c76f5569008311782",
+      "link": "https://newsindialive.in/have-your-hormones-gone-out-of-balance-dont-ignore-these-signs",
+      "title": "क्या आपके हार्मोन का संतुलन बिगड़ गया है? इन संकेतों को नज़रअंदाज़ न करें",
+      "description": null,
+      "content": "ONLY AVAILABLE IN PAID PLANS",
+      "keywords": [
+        "हेल्थ  फिटनेस"
+      ],
+      "creator": [
+        "Desk Team"
+      ],
+      "language": "hindi",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "health"
+      ],
+      "pubDate": "2025-11-22 17:26:54",
+      "pubDateTZ": "UTC",
+      "image_url": "https://newsindialive.in/wp-content/uploads/2025/11/Hormone-imbalance-symptoms_453331159.jpg",
+      "video_url": null,
+      "source_id": "newsindialive",
+      "source_name": "Ni News India",
+      "source_priority": 3993107,
+      "source_url": "https://newsindialive.in",
+      "source_icon": "https://n.bytvi.com/newsindialive.jpg",
+      "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+      "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+      "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+      "duplicate": false
+    },
+    {
+      "article_id": "42ceffb372aa6a520b69b53ccb39906a",
+      "link": "https://newsindialive.in/be-it-heater-or-warming-hands-in-front-of-fire-know-the-disadvantages-of-this-habit-of-indians",
+      "title": "हीटर हो या आग के सामने हाथ तापना, भारतीयों की इस आदत के नुकसान जान लीजिए",
+      "description": null,
+      "content": "ONLY AVAILABLE IN PAID PLANS",
+      "keywords": [
+        "हेल्थ  फिटनेस"
+      ],
+      "creator": [
+        "Desk Team"
+      ],
+      "language": "hindi",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "health"
+      ],
+      "pubDate": "2025-11-22 17:26:50",
+      "pubDateTZ": "UTC",
+      "image_url": "https://newsindialive.in/wp-content/uploads/2025/11/Heater-or-warming-your-hands-nea_1690802047.jpg",
+      "video_url": null,
+      "source_id": "newsindialive",
+      "source_name": "Ni News India",
+      "source_priority": 3993107,
+      "source_url": "https://newsindialive.in",
+      "source_icon": "https://n.bytvi.com/newsindialive.jpg",
+      "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+      "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+      "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+      "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+      "duplicate": false
+    }
+  ],
+  "nextPage": "1763832410659292424"
+}

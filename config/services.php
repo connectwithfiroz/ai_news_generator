@@ -13,6 +13,9 @@ return [
     | a conventional file to locate the various service credentials.
     |
     */
+    'newsapi_org' => [
+        'key' => env('NEWS_API_ORG_KEY'),
+    ],
     'gemini' => [
         'key' => env('GEMINI_API_KEY'),
     ],

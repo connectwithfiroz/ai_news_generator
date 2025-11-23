@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\NewsItemResource\Pages;
-use App\Filament\Resources\NewsItemResource\RelationManagers;
-use App\Models\NewsItem;
+use App\Filament\Resources\NewsMediastackItemResource\Pages;
+use App\Filament\Resources\NewsMediastackItemResource\RelationManagers;
+use App\Models\NewsMediastackItem;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -12,13 +12,12 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\HtmlString;
 
-class NewsItemResource extends Resource
+class NewsMediastackItemResource extends Resource
 {
-    protected static ?string $model = NewsItem::class;
+    protected static ?string $model = NewsMediastackItem::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
     protected static ?string $navigationGroup = 'News';
 
     public static function form(Form $form): Form
@@ -151,9 +150,6 @@ class NewsItemResource extends Resource
             ]);
     }
 
-
-
-
     public static function getRelations(): array
     {
         return [
@@ -164,9 +160,9 @@ class NewsItemResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListNewsItems::route('/'),
-            'create' => Pages\CreateNewsItem::route('/create'),
-            'edit' => Pages\EditNewsItem::route('/{record}/edit'),
+            'index' => Pages\ListNewsMediastackItems::route('/'),
+            'create' => Pages\CreateNewsMediastackItem::route('/create'),
+            'edit' => Pages\EditNewsMediastackItem::route('/{record}/edit'),
         ];
     }
 }
