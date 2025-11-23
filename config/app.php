@@ -1,8 +1,7 @@
 <?php
 
 return [
-    // EXTRA KEY ADDED HERE
-    'mediastack_access_key' => env('MEDIASTACK_ACCESS_KEY', ''),
+    
 
     /*
     |--------------------------------------------------------------------------

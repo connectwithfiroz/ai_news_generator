@@ -37,7 +37,7 @@ class ImageOverlayService
             // write text (wrap)
             $wrapped = wordwrap($text, 55, "\n");
             $img->text($wrapped, $img->width()/2, $height + 60, function($font){
-                $font->file(__DIR__ . '/../../resources/fonts/Roboto-Regular.ttf');
+                // $font->file(__DIR__ . '/../../resources/fonts/Roboto-Regular.ttf');
                 $font->size(28);
                 $font->color('#ffffff');
                 $font->align('center');

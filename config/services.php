@@ -13,6 +13,10 @@ return [
     | a conventional file to locate the various service credentials.
     |
     */
+    'gemini' => [
+        'key' => env('GEMINI_API_KEY'),
+    ],
+
     'openai_key' => [
         'key' => env('OPENAI_KEY'),
     ],
@@ -20,7 +24,7 @@ return [
     'postmark' => [
         'key' => env('POSTMARK_API_KEY'),
     ],
-    
+
     'mediastack' => [
         'key' => env('MEDIASTAC_KEY'),
     ],
