@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('news_items', function (Blueprint $table) {
             $table->id();
-            $table->id();
             $table->timestamp('requested_at')->nullable();
             $table->json('response')->nullable();              // raw API response item
             $table->text('summarize_response')->nullable();   // Hindi summary

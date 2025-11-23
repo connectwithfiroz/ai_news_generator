@@ -36,12 +36,19 @@ class FetchNewsBatch extends Command
 
         if (!$response->ok()) {
             $this->error('Mediastack request failed.');
+            //log error details
+            \Log::error('Mediastack API error', ['status' => $response->status(), 'body' => $response->body()]);
             return 1;
         }
+        //write response into a file for debugging
+        \Storage::disk('local')->put('mediastack_response.json', $response->body());
 
         $data = $response->json()['data'] ?? [];
 
         $count = 0;
+        //create batch_no as max existing +1
+        $maxBatchNo = NewsItem::max('batch_no');
+        $batch_no = $maxBatchNo + 1;
         foreach ($data as $item) {
             if ($count >= 10) break;
             // simple dedupe: skip if url already present
@@ -50,7 +57,9 @@ class FetchNewsBatch extends Command
             NewsItem::create([
                 'requested_at' => Carbon::now(),
                 'response' => $item,
-                'original_image_url' => $item['image'] ?? null
+                'original_image_url' => $item['image'] ?? null,
+                'batch_no' => $batch_no,
+
             ]);
             $count++;
         }

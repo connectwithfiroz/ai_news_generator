@@ -13,9 +13,16 @@ return [
     | a conventional file to locate the various service credentials.
     |
     */
+    'openai_key' => [
+        'key' => env('OPENAI_KEY'),
+    ],
 
     'postmark' => [
         'key' => env('POSTMARK_API_KEY'),
+    ],
+    
+    'mediastack' => [
+        'key' => env('MEDIASTAC_KEY'),
     ],
 
     'resend' => [
