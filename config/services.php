@@ -13,6 +13,10 @@ return [
     | a conventional file to locate the various service credentials.
     |
     */
+    'facebook' => [
+        'page_id' => env('FB_PAGE_ID'),
+        'page_token' => env('FB_PAGE_TOKEN'),
+    ],
     'newsapi_org' => [
         'key' => env('NEWS_API_ORG_KEY'),
     ],

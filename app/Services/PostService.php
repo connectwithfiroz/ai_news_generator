@@ -6,13 +6,19 @@ use Illuminate\Support\Facades\Http;
 
 class PostService
 {
-    public function publishFacebook(string $caption, $imagePathOrUrl)
+    public function publishFacebook($record)
     {
-        $pageId = env('FB_PAGE_ID');
-        $token = env('FB_PAGE_TOKEN');
+        $caption = $record->title . "\n\n" . $record->summary . "\n\n" . $record->url;
+        $imagePathOrUrl = $record->local_image_path ?? $record->image_url;
+        //log image path url
+        \Log::info("Publishing to Facebook with image: " . $imagePathOrUrl);
+
+
+        $pageId = config('services.facebook.page_id');
+        $token = config('services.facebook.page_token');
         $image = $this->ensureUrl($imagePathOrUrl);
 
-        $res = Http::post("https://graph.facebook.com/{$pageId}/photos", [
+        $res = Http::post("https://graph.facebook.com/{$token}/photos", [
             'url' => $image,
             'caption' => $caption,
             'access_token' => $token

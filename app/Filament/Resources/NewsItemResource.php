@@ -134,7 +134,7 @@ class NewsItemResource extends Resource
                     )
                     ->action(
                         fn($record) =>
-                        app(\App\Services\SocialService::class)->publishFacebook($record)
+                        app(\App\Services\PostService::class)->publishFacebook($record)
                     )
                     ->color('primary'),
 
