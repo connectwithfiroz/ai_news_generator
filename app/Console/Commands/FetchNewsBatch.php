@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
-use App\Models\NewsItem;
+use App\Models\NewsMediastackItem;
 use Carbon\Carbon;
 
 
@@ -16,8 +16,8 @@ class FetchNewsBatch extends Command
     public function handle()
     {
         // if any un-published or un-processed items exist, skip fetch
-        $pendingExists = NewsItem::where('is_published', false)->whereNull('summarize_response')->exists()
-            || NewsItem::where('is_published', false)->whereNotNull('summarize_response')->whereNull('processed_at')->exists();
+        $pendingExists = NewsMediastackItem::where('is_published', false)->whereNull('summarize_response')->exists()
+            || NewsMediastackItem::where('is_published', false)->whereNotNull('summarize_response')->whereNull('processed_at')->exists();
 
         if ($pendingExists) {
             $this->info('Pending batch exists — skipping new fetch.');
@@ -47,14 +47,14 @@ class FetchNewsBatch extends Command
 
         $count = 0;
         //create batch_no as max existing +1
-        $maxBatchNo = NewsItem::max('batch_no');
+        $maxBatchNo = NewsMediastackItem::max('batch_no');
         $batch_no = $maxBatchNo + 1;
         foreach ($data as $item) {
             if ($count >= 10) break;
             // simple dedupe: skip if url already present
-            if (NewsItem::where('response->url', $item['url'])->exists()) continue;
+            if (NewsMediastackItem::where('response->url', $item['url'])->exists()) continue;
 
-            NewsItem::create([
+            NewsMediastackItem::create([
                 'requested_at' => Carbon::now(),
                 'response' => $item,
                 'original_image_url' => $item['image'] ?? null,
