@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+// use Intervention\Image\Laravel\Facades\Image;
+use Intervention\Image\Facades\Image;
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -16,5 +20,19 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('test-image', function () {
+    $img = Image::canvas(400, 200, '#ff0000');
+    $img->save(storage_path('app/public/test-red.png'));
+    return "Image created!";
+});
+
+
+use App\Http\Controllers\NewsImageController;
+
+Route::get('/image-with-text', [NewsImageController::class, 'generate']);
+
+
+
 
 require __DIR__.'/auth.php';

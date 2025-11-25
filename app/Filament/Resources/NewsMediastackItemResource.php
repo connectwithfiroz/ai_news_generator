@@ -121,7 +121,7 @@ class NewsMediastackItemResource extends Resource
                     )
                     ->action(
                         fn($record) =>
-                        app(\App\Services\SocialService::class)->publishWhatsapp($record)
+                        app(\App\Services\PostService::class)->publishWhatsapp($record)
                     )
                     ->color('success'),
 
@@ -133,7 +133,7 @@ class NewsMediastackItemResource extends Resource
                     )
                     ->action(
                         fn($record) =>
-                        app(\App\Services\SocialService::class)->publishFacebook($record)
+                        app(\App\Services\PostService::class)->publishFacebook($record)
                     )
                     ->color('primary'),
 
@@ -145,7 +145,7 @@ class NewsMediastackItemResource extends Resource
                     )
                     ->action(
                         fn($record) =>
-                        app(\App\Services\SocialService::class)->publishLinkedin($record)
+                        app(\App\Services\PostService::class)->publishLinkedin($record)
                     ),
             ]);
     }

@@ -3,29 +3,47 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
-
+use Str;
 class PostService
 {
+    private function ensureUrl($path)
+    {
+        if (Str::startsWith($path, ['http://', 'https://'])) {
+            return $path; // already a URL
+        }
+
+        // convert "news/abc.jpg" → full public URL
+        return asset('storage/' . ltrim($path, '/'));
+    }
     public function publishFacebook($record)
     {
-        $caption = $record->title . "\n\n" . $record->summary . "\n\n" . $record->url;
-        $imagePathOrUrl = $record->local_image_path ?? $record->image_url;
-        //log image path url
-        \Log::info("Publishing to Facebook with image: " . $imagePathOrUrl);
+        $caption = $record->response['title'] . " - " .
+            $record->summarize_response . " - " .
+            $record->response['url'];
 
+        $imageUrl = $record->local_image_path
+            ? asset('storage/' . $record->local_image_path)
+            : $record->response['image'];
 
         $pageId = config('services.facebook.page_id');
-        $token = config('services.facebook.page_token');
-        $image = $this->ensureUrl($imagePathOrUrl);
+    $pageToken = config('services.facebook.page_token');
 
-        $res = Http::post("https://graph.facebook.com/{$token}/photos", [
-            'url' => $image,
+    $response = Http::retry(3, 800)
+        ->timeout(30)
+        ->withoutVerifying()   // XAMPP fix only
+        ->post("https://graph.facebook.com/{$pageId}/photos", [
+            'url' => $imageUrl,
             'caption' => $caption,
-            'access_token' => $token
+            'access_token' => $pageToken
         ]);
 
-        return $res->json() + ['ok' => $res->ok()];
+        return $response->json() + ['ok' => $response->ok()];
     }
+
+
+
+
+
 
     public function publishWhatsApp(string $caption, $imagePathOrUrl)
     {
@@ -56,10 +74,5 @@ class PostService
         return ['ok' => false, 'error' => 'Not implemented'];
     }
 
-    protected function ensureUrl($pathOrUrl)
-    {
-        if (filter_var($pathOrUrl, FILTER_VALIDATE_URL)) return $pathOrUrl;
-        // assume storage path, convert to asset url
-        return config('app.url') . Storage::url(str_replace('/storage/','',$pathOrUrl));
-    }
+
 }

@@ -146,7 +146,7 @@ class NewsItemResource extends Resource
                     )
                     ->action(
                         fn($record) =>
-                        app(\App\Services\SocialService::class)->publishLinkedin($record)
+                        app(\App\Services\PostService::class)->publishLinkedin($record)
                     ),
             ]);
     }

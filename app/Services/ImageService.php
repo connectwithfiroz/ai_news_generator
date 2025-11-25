@@ -16,7 +16,7 @@ class ImageService
         \Log::info("LOCAL URL IS- ".$url);
         // your local image generation logic
         $news->local_image_path = $url;
-        // $news->image_generated = 1;
+        // $news->local_image_path = $news->original_image_url;//FOR TESTING
         $news->save();
     }
 }
