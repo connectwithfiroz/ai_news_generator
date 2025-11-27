@@ -9,7 +9,7 @@ use Spatie\Browsershot\Browsershot;
 
 class NewsImageController extends Controller
 {
-    function generateImageWithBrowsershot(Request $request){
+    public function generateImageWithBrowsershot(Request $request){
         $image = $request->get('image');       // static URL or dynamic API
         $title = $request->get('title');
         $description = $request->get('description');
@@ -18,11 +18,12 @@ class NewsImageController extends Controller
         $filePath = storage_path('app/public/' . $fileName);
 
         // Render blade
-        $html = view('social-card', [
+        $html = view('news.social_card', [
             'image'       => $image,
             'title'       => $title,
             'description' => $description
         ])->render();
+        // return $html;
 
         // Generate image
         Browsershot::html($html)
