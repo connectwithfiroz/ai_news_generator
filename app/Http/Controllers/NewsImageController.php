@@ -9,26 +9,36 @@ use Spatie\Browsershot\Browsershot;
 
 class NewsImageController extends Controller
 {
-    public function generateImageWithBrowsershot(Request $request){
-        $image = $request->get('image');       // static URL or dynamic API
+    public function generateImageWithBrowsershot(Request $request)
+    {
+        $image = $request->get('image');      // static URL or dynamic API
         $title = $request->get('title');
         $description = $request->get('description');
+        $category = $request->get('category') ?? 'GENERAL';
+        $source = $request->get('source') ?? 'FREEPRESSJOURNAL.IN';
 
         $fileName = 'social_' . time() . '.png';
         $filePath = storage_path('app/public/' . $fileName);
 
         // Render blade
         $html = view('news.social_card', [
-            'image'       => $image,
-            'title'       => $title,
-            'description' => $description
+            'image' => $image,
+            'title' => $title,
+            'description' => $description,
+            'category' => $category,
+            'source' => $source,
         ])->render();
-        // return $html;
+        return $html;
+
+        // The HTML content in 'news.social_card' MUST be designed for 900x1200 now.
 
         // Generate image
         Browsershot::html($html)
-            ->windowSize(1200, 630)
+            // 🚨 CHANGE 1: Use a vertical, mobile-friendly window size (e.g., 900px wide x 1200px high - a 3:4 ratio)
+            ->windowSize(900, 1200)
+            // Keep deviceScaleFactor(2) for a high-resolution output (1800x2400 actual pixels)
             ->deviceScaleFactor(2)
+            ->fullPage(false) // ❗ Use false when generating fixed-height cards
             ->save($filePath);
 
         return response()->json([
