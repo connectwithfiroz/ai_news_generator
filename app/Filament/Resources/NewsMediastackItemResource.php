@@ -7,11 +7,15 @@ use App\Filament\Resources\NewsMediastackItemResource\RelationManagers;
 use App\Models\NewsMediastackItem;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\HtmlString;
+
+
 
 class NewsMediastackItemResource extends Resource
 {
@@ -92,8 +96,30 @@ class NewsMediastackItemResource extends Resource
                         empty($record->local_image_path)
                     )
                     ->action(
-                        fn($record) =>
-                        app(\App\Services\ImageService::class)->generate($record)
+                        function($record) {
+                            // redirect()->route('generate-image-with-browsershot', [
+                            //     'title' => $record->response['title'] ?? '',
+                            //     'description' => $record->summarize_response ?? '',
+                            //     'image' => $record->response['image'] ?? '',
+                            //     'category' => $record->response['category'] ?? 'GENERAL',
+                            //     'source' => $record->response['source'] ?? 'FREEPRESSJOURNAL.IN',
+                            // ]);
+                            $image_generate_response = app(\App\Services\ImageService::class)->generate($record);
+                            if(!$image_generate_response['status']){
+                                //handle error
+                                Notification::make()
+                                    ->title('Image Generation Failed')
+                                    ->body($image_generate_response['error'] ?? 'Unknown error occurred during image generation.')
+                                    ->danger()
+                                    ->send();
+                            }else{
+                                Notification::make()
+                                    ->title('Image Generated Successfully')
+                                    ->body('The image has been generated and saved successfully.')
+                                    ->success()
+                                    ->send();
+                            }
+                        }
                     )
                     ->color('info'),
 

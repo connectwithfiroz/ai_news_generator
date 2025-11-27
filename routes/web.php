@@ -33,7 +33,7 @@ use App\Http\Controllers\NewsImageController;
 Route::get('/image-with-text', [NewsImageController::class, 'generate']);
 Route::get('/generateHtmlImage', [NewsImageController::class, 'generateHtmlImage']);
 Route::get('/generate-image-with-prompt', [NewsImageController::class, 'generateImageWithPrompt']);
-Route::get('/generate-image-with-browsershot', [NewsImageController::class, 'generateImageWithBrowsershot']);
+Route::get('/generate-image-with-browsershot', [NewsImageController::class, 'generateImageWithBrowsershot'])->name('generate-image-with-browsershot');
 
 
 

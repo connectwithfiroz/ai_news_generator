@@ -28,7 +28,6 @@ class NewsImageController extends Controller
             'category' => $category,
             'source' => $source,
         ])->render();
-        return $html;
 
         // The HTML content in 'news.social_card' MUST be designed for 900x1200 now.
 
@@ -41,6 +40,7 @@ class NewsImageController extends Controller
             ->fullPage(false) // ❗ Use false when generating fixed-height cards
             ->save($filePath);
 
+            
         return response()->json([
             'status' => true,
             'image_url' => asset('storage/' . $fileName)
