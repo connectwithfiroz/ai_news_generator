@@ -15,30 +15,47 @@ class PostService
         // convert "news/abc.jpg" → full public URL
         return asset('storage/' . ltrim($path, '/'));
     }
+    // use Illuminate\Support\Facades\Http;
+
     public function publishFacebook($record)
     {
+        // Build the caption
         $caption = $record->response['title'] . " - " .
             $record->summarize_response . " - " .
             $record->response['url'];
 
+        // Decide image URL
         $imageUrl = $record->local_image_path
             ? asset('storage/' . $record->local_image_path)
             : $record->response['image'];
 
+        // Facebook Page credentials
         $pageId = config('services.facebook.page_id');
-    $pageToken = config('services.facebook.page_token');
+        $pageToken = config('services.facebook.page_token'); // Must be Page Access Token
 
-    $response = Http::retry(3, 800)
-        ->timeout(30)
-        ->withoutVerifying()   // XAMPP fix only
-        ->post("https://graph.facebook.com/{$pageId}/photos", [
-            'url' => $imageUrl,
-            'caption' => $caption,
-            'access_token' => $pageToken
-        ]);
+        try {
+            $response = Http::retry(3, 800)
+                ->timeout(30)
+                ->withoutVerifying() // Local XAMPP SSL fix
+                ->post("https://graph.facebook.com/v17.0/{$pageId}/photos", [
+                    'url' => $imageUrl,
+                    'caption' => $caption,
+                    'access_token' => $pageToken,
+                ]);
 
-        return $response->json() + ['ok' => $response->ok()];
+            $data = $response->json();
+
+            if ($response->successful()) {
+                return ['ok' => true, 'data' => $data];
+            } else {
+                return ['ok' => false, 'error' => $data];
+            }
+
+        } catch (\Exception $e) {
+            return ['ok' => false, 'error' => $e->getMessage()];
+        }
     }
+
 
 
 

@@ -16,6 +16,7 @@ return [
     'facebook' => [
         'page_id' => env('FB_PAGE_ID'),
         'page_token' => env('FB_PAGE_TOKEN'),
+        'app_token' => env('FB_APP_TOKEN'),
     ],
     'newsapi_org' => [
         'key' => env('NEWS_API_ORG_KEY'),

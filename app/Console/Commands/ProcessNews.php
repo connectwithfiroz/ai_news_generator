@@ -32,14 +32,14 @@ class ProcessNews extends Command
 
             // Prompt (no unwanted indentation inside heredoc)
             $prompt = <<<PROMPT
-Write a simple Hindi summary in one short paragraph.
-Target audience: low-education rural readers.
+                Write a simple Hindi summary in one short paragraph.
+                Target audience: low-education rural readers.
 
-Title: "$title"
-Description: "$description"
+                Title: "$title"
+                Description: "$description"
 
-Keep it very simple, clear, and easy to understand.
-PROMPT;
+                Keep it very simple, clear, and easy to understand.
+                PROMPT;
 
             // AI summary with fallback
             try {

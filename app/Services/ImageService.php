@@ -11,12 +11,11 @@ class ImageService
     {
         $image = $news['response']['image'];
         $title = $news['response']['title'];
-        $url = app(\App\Services\ImageOverlayService::class)->overlayText($image, $title);
-        //log url
-        \Log::info("LOCAL URL IS- ".$url);
         // your local image generation logic
-        $news->local_image_path = $url;
-        // $news->local_image_path = $news->original_image_url;//FOR TESTING
+        // $news->local_image_path = $url;
+        // $url = app(\App\Services\ImageOverlayService::class)->overlayText($image, $title);
+        //FOR TESTING
+        $news->local_image_path = $news->original_image_url;
         $news->save();
     }
 }
