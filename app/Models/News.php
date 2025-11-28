@@ -12,7 +12,7 @@ class News extends Model
         'published_at_whatsapp','published_url_whatsapp',
         'published_at_facebook','published_url_facebook',
         'published_at_linkedin','published_url_linkedin',
-        'is_published','processed_at', 'batch_no', 'title', 'source'
+        'is_published','processed_at', 'batch_no', 'title', 'source', 'rewritten_title', 'rewritten_description', 'content'
     ];
 
     protected $casts = [
