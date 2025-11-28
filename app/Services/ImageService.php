@@ -12,11 +12,17 @@ class ImageService
         try {
             // Always use object access — NOT array access
             $response = $news->response ?? [];
+            $image_url = $news->original_image_url ?? $news->response['image'] ?? '';
+            $description = $news->summarize_response ?? $response['description'] ?? '';
+            if(empty($image_url)){
+                throw new \Exception('No image URL found for generating image.');
+            }
+
 
             $imagesResponse = $this->generateImageWithBrowsershot([
-                'image' => $response['image'] ?? '',
+                'image' => $image_url,
                 'title' => $response['title'] ?? '',
-                'description' => $response['content'] ?? $news->summarize_response,
+                'description' => $description,
                 'category' => $response['category'] ?? '',
                 'source' => $response['source'] ?? '',
             ]);
@@ -56,6 +62,7 @@ class ImageService
             $filePath = storage_path('app/public/news_images/' . $fileName);
 
             $html = view('news.social_card', $data)->render();
+            // return $html;
 
             Browsershot::html($html)
                 ->windowSize(900, 1200)

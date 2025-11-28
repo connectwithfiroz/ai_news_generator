@@ -103,8 +103,10 @@ class NewsMediastackItemResource extends Resource
                             //     'image' => $record->response['image'] ?? '',
                             //     'category' => $record->response['category'] ?? 'GENERAL',
                             //     'source' => $record->response['source'] ?? 'FREEPRESSJOURNAL.IN',
+                            //     'flag' => 1,// indicate redirect to Filament
                             // ]);
                             $image_generate_response = app(\App\Services\ImageService::class)->generate($record);
+                            dd($image_generate_response);   
                             if(!$image_generate_response['status']){
                                 //handle error
                                 Notification::make()

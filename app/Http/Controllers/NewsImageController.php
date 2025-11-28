@@ -27,10 +27,8 @@ class NewsImageController extends Controller
             'description' => $description,
             'category' => $category,
             'source' => $source,
+            'flag' => $flag,
         ])->render();
-
-        // The HTML content in 'news.social_card' MUST be designed for 900x1200 now.
-
         // Generate image
         Browsershot::html($html)
             // 🚨 CHANGE 1: Use a vertical, mobile-friendly window size (e.g., 900px wide x 1200px high - a 3:4 ratio)
@@ -40,11 +38,17 @@ class NewsImageController extends Controller
             ->fullPage(false) // ❗ Use false when generating fixed-height cards
             ->save($filePath);
 
-            
-        return response()->json([
-            'status' => true,
-            'image_url' => asset('storage/' . $fileName)
-        ]);
+        //if flag is empty then return json else return to route
+        if(empty($flag)){
+
+            return response()->json([
+                'status' => true,
+                'image_url' => asset('storage/' . $fileName)
+            ]);
+        }else if($flag == 1){
+            //redirect to filament resource
+            return redirect()->route('filament.resources.news-mediastack-items.index')->with('success', 'Image generated successfully.');
+        }
     }
     public function generateImageWithPrompt()
     {
