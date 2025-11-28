@@ -16,6 +16,7 @@ return new class extends Migration
             $table->timestamp('requested_at')->nullable();
             $table->json('response')->nullable();              // raw API response item
             $table->string('title');
+            $table->string('source');
             $table->text('summarize_response')->nullable();   // Hindi summary
             $table->string('local_image_path')->nullable();   // local cached/overlayed image
             $table->string('original_image_url')->nullable();
@@ -30,6 +31,7 @@ return new class extends Migration
             $table->boolean('is_published')->default(false);
             $table->timestamp('processed_at')->nullable();    // summarised + image overlaid
             $table->integer('batch_no')->default(1);          // batch identifier
+            $table->boolean('is_mark_for_publish')->default(false);
             $table->timestamps();
         });
     }

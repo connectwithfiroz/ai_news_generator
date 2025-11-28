@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Gemini\Laravel\Facades\Gemini;
 use Spatie\Browsershot\Browsershot;
-use App\Models\NewsMediastackItem;
+use App\Models\News;
+use Illuminate\Support\Facades\Http;
+use Carbon\Carbon;
 
 class NewsController extends Controller
 {
@@ -55,7 +57,7 @@ class NewsController extends Controller
         ✔ You don’t care where the value comes from
         */
         $flag = $request->get('flag', null);
-        $news = NewsMediastackItem::find($news_id);
+        $news = News::find($news_id);
         $response = $news->response ?? [];
         $image_url = $news->original_image_url ?? $news->response['image'] ?? '';
 
@@ -109,4 +111,76 @@ class NewsController extends Controller
         }
     }
     // ---------- GENERATE IMAGE USING BROWSERSHOT <<<---------- //
+
+
+    // FETCH INSHORT NEWS USING API >>>--------------//
+    public function fetchAndStore()
+    {
+        try {
+            // Request URL (your static or configurable endpoint)
+            $url = "https://inshorts.com/api/hi/search/trending_topics/national?page=1&type=NEWS_CATEGORY";
+
+            // 1. Fetch API response
+            $response = Http::withHeaders([
+                'Accept' => 'application/json'
+            ])->get($url);
+
+            if (!$response->successful()) {
+                return response()->json(['status' => false, 'message' => 'API failed'], 500);
+            }
+
+            $data = $response->json();
+
+            // 2. Parse news_list
+            if (!isset($data['data']['news_list'])) {
+                return response()->json(['status' => false, 'message' => 'Invalid JSON'], 422);
+            }
+
+            foreach ($data['data']['news_list'] as $item) {
+
+                $news = $item['news_obj'] ?? null;
+                if (!$news) continue;
+
+                // Extract essential fields
+                $title   = $news['title'] ?? null;
+                $content = $news['content'] ?? null;
+                $img     = $news['image_url'] ?? null;
+
+                // Prevent duplicate insert by hash_id
+                $exists = News::where('original_image_url', $img)
+                            ->where('response->news_obj->hash_id', $news['hash_id'])
+                            ->exists();
+
+                if ($exists) continue;
+
+                // 3. Insert into DB
+                News::create([
+                    'requested_at'        => Carbon::now(),
+                    'response'            => $news,               // store raw item
+                    'summarize_response'  => null,
+                    'local_image_path'    => null,
+                    'original_image_url'  => $img,
+                    'gemini_api_url'      => null,
+                    'published_at_whatsapp' => null,
+                    'published_at_facebook' => null,
+                    'published_at_linkedin' => null,
+                    'published_url_whatsapp' => null,
+                    'published_url_facebook' => null,
+                    'published_url_linkedin' => null,
+                    'is_published'          => false,
+                    'processed_at'          => null,
+                    'batch_no'              => 1,
+                ]);
+            }
+
+            return response()->json(['status' => true, 'message' => 'News Stored Successfully']);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'status'  => false,
+                'message' => $e->getMessage()
+            ], 500);
+        }
+    }
+    // FETCH INSHORT NEWS USING API <<<--------------//
 }
