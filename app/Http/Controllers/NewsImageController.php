@@ -50,6 +50,47 @@ class NewsImageController extends Controller
             return redirect()->route('filament.resources.news-mediastack-items.index')->with('success', 'Image generated successfully.');
         }
     }
+    public function generateImageWithBrowsershotWithData(Request $request)
+    {
+        $image = $request->get('image');      // static URL or dynamic API
+        $title = $request->get('title');
+        $description = $request->get('description');
+        $category = $request->get('category') ?? 'GENERAL';
+        $source = $request->get('source') ?? 'FREEPRESSJOURNAL.IN';
+
+        $fileName = 'social_' . time() . '.png';
+        $filePath = storage_path('app/public/' . $fileName);
+
+        // Render blade
+        $html = view('news.social_card', [
+            'image' => $image,
+            'title' => $title,
+            'description' => $description,
+            'category' => $category,
+            'source' => $source,
+            'flag' => $flag,
+        ])->render();
+        // Generate image
+        Browsershot::html($html)
+            // 🚨 CHANGE 1: Use a vertical, mobile-friendly window size (e.g., 900px wide x 1200px high - a 3:4 ratio)
+            ->windowSize(900, 1200)
+            // Keep deviceScaleFactor(2) for a high-resolution output (1800x2400 actual pixels)
+            ->deviceScaleFactor(2)
+            ->fullPage(false) // ❗ Use false when generating fixed-height cards
+            ->save($filePath);
+
+        //if flag is empty then return json else return to route
+        if(empty($flag)){
+
+            return response()->json([
+                'status' => true,
+                'image_url' => asset('storage/' . $fileName)
+            ]);
+        }else if($flag == 1){
+            //redirect to filament resource
+            return redirect()->route('filament.resources.news-mediastack-items.index')->with('success', 'Image generated successfully.');
+        }
+    }
     public function generateImageWithPrompt()
     {
         $ai = new \App\Services\AiServiceGemini();
