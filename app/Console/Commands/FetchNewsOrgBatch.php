@@ -25,10 +25,10 @@ class FetchNewsOrgBatch extends Command
                 ->whereNull('processed_at')
                 ->exists();
 
-        // if ($pendingExists) {
-        //     $this->info('Pending batch exists — skipping new fetch.');
-        //     return 0;
-        // }
+        if ($pendingExists) {
+            $this->info('Pending batch exists — skipping new fetch.');
+            return 0;
+        }
 
         // NewsAPI Key
         $apiKey = config('services.newsapi_org.key') ?: env('NEWS_API_ORG_KEY');
@@ -64,7 +64,7 @@ class FetchNewsOrgBatch extends Command
         }
 
         // Save raw response for debugging
-        \Storage::disk('local')->put('newsapiorg_response.json', $response->body());
+        // \Storage::disk('local')->put('newsapiorg_response.json', $response->body());
 
         $articles = $response->json()['articles'] ?? [];
 

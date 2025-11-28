@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->timestamp('requested_at')->nullable();
             $table->json('response')->nullable();              // raw API response item
-            $table->string('title');
-            $table->string('source');
+            $table->string('title')->nullable();
+            $table->text('content')->nullable();
+            $table->string('source')->nullable();
             $table->text('summarize_response')->nullable();   // Hindi summary
             $table->string('local_image_path')->nullable();   // local cached/overlayed image
             $table->string('original_image_url')->nullable();

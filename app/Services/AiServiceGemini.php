@@ -91,4 +91,46 @@ class AiServiceGemini
         $news->save();
     }
 
+    public function summarizeAndSaveInshort($news)
+    {
+        $title = $news->response['title'] ?? '';
+        $description = $news->response['description'] ?? '';
+
+        if (!$title && !$description) {
+            return;
+        }
+
+        $prompt = <<<PROMPT
+            Rewrite the given Hindi title and description into completely fresh, original sentences
+            while keeping the same meaning. Do NOT summarize. Just rephrase to avoid copyright issues.
+
+            Rules:
+            - Use simple Hindi suitable for low-education rural readers.
+            - Make sure the wording is different from the original.
+            - Keep the information accurate.
+            - Output ONLY valid JSON with two keys: "title" and "description".
+
+            Input:
+            Title: "$title"
+            Description: "$description"
+            PROMPT;
+
+        // Call Gemini
+        $response = Gemini::generativeModel('gemini-2.5-flash')
+            ->generateContent($prompt);
+
+        // Extract text output from Gemini (JSON string)
+        $output = $response->text();
+        //log $output for debugging
+        \Log::info('Gemini rewrite output: ' . $output);
+
+        $data = json_decode($output, true);
+
+        $news->rewritten_title = $data['title'] ?? null;
+        $news->rewritten_description = $data['description'] ?? null;
+        $news->summarize_response = $output;
+        $news->save();
+    }
+
+
 }

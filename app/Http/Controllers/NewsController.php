@@ -114,7 +114,7 @@ class NewsController extends Controller
 
 
     // FETCH INSHORT NEWS USING API >>>--------------//
-    public function fetchAndStore()
+    public function fetchInshortNewsAndStore()
     {
         try {
             // Request URL (your static or configurable endpoint)
@@ -139,37 +139,48 @@ class NewsController extends Controller
             foreach ($data['data']['news_list'] as $item) {
 
                 $news = $item['news_obj'] ?? null;
-                if (!$news) continue;
+                if (!$news)
+                    continue;
 
                 // Extract essential fields
-                $title   = $news['title'] ?? null;
+                $title = $news['title'] ?? null;
                 $content = $news['content'] ?? null;
-                $img     = $news['image_url'] ?? null;
+                $img = $news['image_url'] ?? null;
 
                 // Prevent duplicate insert by hash_id
                 $exists = News::where('original_image_url', $img)
-                            ->where('response->news_obj->hash_id', $news['hash_id'])
-                            ->exists();
+                    ->where('response->news_obj->hash_id', $news['hash_id'])
+                    ->exists();
 
-                if ($exists) continue;
+                if ($exists)
+                    continue;
+
+                //mapped fields
+                // Map NewsAPI fields to Mediastack-style fields
+                $mapped = [
+                    "unique_id" => $news['hash_id'] ?? null,
+                    "author" => $news['author_name'] ?? null,
+                    "title" => $news['title'] ?? null,
+                    "description" => $news['content'] ?? null,
+                    "url" => $news['source_url'] ?? null,
+                    "source" => $news['source_name'] ?? null,
+                    "image" => $news['image_url'] ?? null,
+                    "category" => $news['category_names'] ? implode(',', $news['category_names']) : null,
+                    "language" => "en",
+                    "country" => $news['country_code'] ?? null,
+                    "published_at" => $news['publishedAt'] ?? null,
+                ];
 
                 // 3. Insert into DB
                 News::create([
-                    'requested_at'        => Carbon::now(),
-                    'response'            => $news,               // store raw item
-                    'summarize_response'  => null,
-                    'local_image_path'    => null,
-                    'original_image_url'  => $img,
-                    'gemini_api_url'      => null,
-                    'published_at_whatsapp' => null,
-                    'published_at_facebook' => null,
-                    'published_at_linkedin' => null,
-                    'published_url_whatsapp' => null,
-                    'published_url_facebook' => null,
-                    'published_url_linkedin' => null,
-                    'is_published'          => false,
-                    'processed_at'          => null,
-                    'batch_no'              => 1,
+                    'requested_at' => Carbon::now(),
+                    'response' => $mapped,               // store raw item
+                    'summarize_response' => null,
+                    'local_image_path' => null,
+                    'original_image_url' => $img,
+                    'title' => $title,
+                    'source' => 'INSHORTS',
+                    'batch_no' => 1,
                 ]);
             }
 
@@ -177,7 +188,7 @@ class NewsController extends Controller
 
         } catch (\Exception $e) {
             return response()->json([
-                'status'  => false,
+                'status' => false,
                 'message' => $e->getMessage()
             ], 500);
         }
