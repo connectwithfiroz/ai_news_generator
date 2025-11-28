@@ -14,6 +14,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\HtmlString;
+use App\Http\Controllers\NewsController;
+use Illuminate\Support\Facades\Storage;
+
 
 
 
@@ -90,40 +93,24 @@ class NewsMediastackItemResource extends Resource
                     ->color('warning'),
 
                 Tables\Actions\Action::make('generateImage')
+                    ->label('Generate Image')
+                    ->url(fn ($record) => route('filament.admin.news.generate-image', $record->id) . '?flag=1')
+
+                    ->openUrlInNewTab()   // So async process doesn't block Filament
                     ->visible(
                         fn($record) =>
                         !empty($record->summarize_response) &&
                         empty($record->local_image_path)
                     )
-                    ->action(
-                        function($record) {
-                            // redirect()->route('generate-image-with-browsershot', [
-                            //     'title' => $record->response['title'] ?? '',
-                            //     'description' => $record->summarize_response ?? '',
-                            //     'image' => $record->response['image'] ?? '',
-                            //     'category' => $record->response['category'] ?? 'GENERAL',
-                            //     'source' => $record->response['source'] ?? 'FREEPRESSJOURNAL.IN',
-                            //     'flag' => 1,// indicate redirect to Filament
-                            // ]);
-                            $image_generate_response = app(\App\Services\ImageService::class)->generate($record);
-                            dd($image_generate_response);   
-                            if(!$image_generate_response['status']){
-                                //handle error
-                                Notification::make()
-                                    ->title('Image Generation Failed')
-                                    ->body($image_generate_response['error'] ?? 'Unknown error occurred during image generation.')
-                                    ->danger()
-                                    ->send();
-                            }else{
-                                Notification::make()
-                                    ->title('Image Generated Successfully')
-                                    ->body('The image has been generated and saved successfully.')
-                                    ->success()
-                                    ->send();
-                            }
-                        }
-                    )
                     ->color('info'),
+
+                Tables\Actions\Action::make('viewGeneratedImage')
+                    ->visible(fn($record) => !empty($record->local_image_path))
+                    ->modalHeading('View Generated Image')
+                    ->modalContent(fn($record) => new HtmlString('<img src="' . Storage::url($record->local_image_path) . '" alt="Generated Image" style="max-width:100%;">'))
+                    ->modalWidth('md')
+                    ->label('View Image')
+                    ->color('gray'),
 
                 Tables\Actions\Action::make('viewSummary')
                     ->visible(fn($record) => !empty($record->summarize_response))

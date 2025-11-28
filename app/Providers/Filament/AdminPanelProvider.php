@@ -17,7 +17,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-
+use Illuminate\Support\Facades\Route;
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
@@ -53,6 +53,20 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->routes(function () {
+                Route::middleware([
+                    'web',
+                    config('filament.auth.middleware'),
+                    'auth:' . config('filament.auth.guard'),
+                ])->group(function () {
+
+                    // Your protected Filament admin routes here
+                    Route::get('news/generate-image/{id}', [\App\Http\Controllers\NewsController::class, 'generateImageWithBrowsershot'])
+                        ->name('news.generate-image');
+
+                });
+            })
+        ;
     }
 }

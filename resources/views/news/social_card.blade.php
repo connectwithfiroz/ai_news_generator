@@ -150,7 +150,7 @@
             @endif
 
             <div class="image-part">
-                <img src="https://nis-gs.pix.in/inshorts/images/v1/variants/jpg/m/2025/11_nov/27_thu/img_1764217725717_820.jpg"
+                <img src="{{ $image_url }}"
                     class="bg" alt="Left side of the image">
             </div>
 
