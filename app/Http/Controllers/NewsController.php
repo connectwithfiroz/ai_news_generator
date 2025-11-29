@@ -60,6 +60,7 @@ class NewsController extends Controller
         $news = News::find($news_id);
         $response = $news->response ?? [];
         $image_url = $news->original_image_url ?? $news->response['image'] ?? '';
+        dd($news->summarize_response);
 
 
         if (empty($image_url)) {
@@ -70,6 +71,11 @@ class NewsController extends Controller
         $category = $response['category'] ?? '';
         $source = $response['source'] ?? '';
         $title = $response['title'] ?? '';
+
+        // $summarize_response = $news->summarize_response ?? '';
+        // $summarize_response = json_decode($summarize_response, true);
+        dd($news->summarize_response);
+
 
         $fileName = 'social_' . time() . '.png';
         $filePath = storage_path('app/public/news_images/' . $fileName);
@@ -87,7 +93,7 @@ class NewsController extends Controller
         //USE COMPACT SYNTAX IF KEY AND VARIABLE NAME ARE SAME
         $html = view('news.social_card', data:
             compact('image_url', 'title', 'description', 'category', 'source', 'flag'))->render();
-        // return $html;
+        return $html;
         // Generate image
         Browsershot::html($html)
             // 🚨 CHANGE 1: Use a vertical, mobile-friendly window size (e.g., 900px wide x 1200px high - a 3:4 ratio)

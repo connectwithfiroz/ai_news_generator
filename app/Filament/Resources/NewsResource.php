@@ -80,7 +80,7 @@ class NewsResource extends Resource
                     ->visible(fn($record) => empty($record->summarize_response))
                     ->action(
                         fn($record) =>
-                        app(\App\Services\AiServiceGemini::class)->summarizeAndSaveInshort($record)
+                        app(\App\Services\AiServiceGemini::class)->summarizeAndSaveInshortHindi($record)
                     )
                     ->color('warning'),
 
