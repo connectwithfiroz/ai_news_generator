@@ -23,6 +23,6 @@ class News extends Model
         'published_at_linkedin' => 'datetime',
         'processed_at' => 'datetime',
         'is_published' => 'boolean',
-        // 'summarize_response' => 'array',
+        'summarize_response_json' => 'array',
     ];
 }

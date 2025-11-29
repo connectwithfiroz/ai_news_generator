@@ -83,7 +83,7 @@
         }
 
         .title {
-            font-size: 3.1rem;
+            font-size: 2.5rem;
             /* 50px */
             font-weight: 900;
             line-height: 1.15;
@@ -97,7 +97,7 @@
             line-height: 1.4;
             color: #555;
             display: -webkit-box;
-            -webkit-line-clamp: 5;
+            -webkit-line-clamp: 7;
             -webkit-box-orient: vertical;
             overflow: hidden;
             margin-bottom: 1.8rem;
@@ -105,7 +105,7 @@
 
         .disclaimer {
             font-style: italic;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             opacity: 0.7;
             margin-top: 1.2rem;
             line-height: 1.45;
@@ -146,7 +146,7 @@
         <div class="image-container">
 
             @if(!empty($category))
-                <div class="category">Viral News</div>
+                <div class="category">{{$category}}</div>
             @endif
 
             <div class="image-part">

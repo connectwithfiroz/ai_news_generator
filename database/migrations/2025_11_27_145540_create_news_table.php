@@ -33,6 +33,7 @@ return new class extends Migration
             $table->timestamp('processed_at')->nullable();    // summarised + image overlaid
             $table->integer('batch_no')->default(1);          // batch identifier
             $table->boolean('is_mark_for_publish')->default(false);
+            $table->json('summarize_response_json')->nullable(); // JSON structured summary
             $table->timestamps();
         });
     }

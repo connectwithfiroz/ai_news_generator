@@ -47,53 +47,48 @@ class NewsController extends Controller
     // ---------- GENERATE IMAGE USING BROWSERSHOT >>>---------- //
     public function generateImageWithBrowsershot(Request $request, $news_id)
     {
-        /*
-        ✔ You want only query string parameters
-        ✔ Safety, clarity, less confusion
-
-        Use $request->get() when:
-
-        ✔ You want to accept input from query OR form POST OR route parameters
-        ✔ You don’t care where the value comes from
-        */
         $flag = $request->get('flag', null);
         $news = News::find($news_id);
         $response = $news->response ?? [];
         $image_url = $news->original_image_url ?? $news->response['image'] ?? '';
-        dd($news->summarize_response);
 
 
         if (empty($image_url)) {
             throw new \Exception('No image URL found for generating image.');
         }
         // $description = $news->summarize_response ?? $response['description'] ?? '';
-        $description = $response['description'] ?? '';
         $category = $response['category'] ?? '';
         $source = $response['source'] ?? '';
-        $title = $response['title'] ?? '';
+        $title = $news->rewritten_title ?? $news->summarize_response_json['title'] ?? $news['title'] ?? '';
+        $description = $news->rewritten_description ?? $news->summarize_response_json['description'] ?? '';
+        //if title or description is empty then return with error to filament 
+        if (empty($title) || empty($description)) {
+            if (empty($title) && empty($description)) {
+                $message = 'Title and Description are missing for generating image.';
+            } elseif (empty($title)) {
+                $message = 'Title is missing for generating image.';
+            } else {
+                $message = 'Description is missing for generating image.';
+            }
 
-        // $summarize_response = $news->summarize_response ?? '';
-        // $summarize_response = json_decode($summarize_response, true);
-        dd($news->summarize_response);
-
+            if (empty($flag)) {
+                return response()->json([
+                    'status' => false,
+                    'message' => $message
+                ], 422);
+            } else if ($flag == 1) {
+                return redirect()->route('filament.admin.resources.news.index')->with('error', $message);
+            }
+        }
+        // dd($news->summarize_response_json['description']);
 
         $fileName = 'social_' . time() . '.png';
         $filePath = storage_path('app/public/news_images/' . $fileName);
 
-        // Render blade
-        // $html = view('news.social_card', [
-        //     'image_url' => $image_url,
-        //     'title' => $title,
-        //     'description' => $description,
-        //     'category' => $category,
-        //     'source' => $source,
-        //     'flag' => $flag,
-        // ])->render();
-        // return $html;
         //USE COMPACT SYNTAX IF KEY AND VARIABLE NAME ARE SAME
         $html = view('news.social_card', data:
             compact('image_url', 'title', 'description', 'category', 'source', 'flag'))->render();
-        return $html;
+        // return $html;
         // Generate image
         Browsershot::html($html)
             // 🚨 CHANGE 1: Use a vertical, mobile-friendly window size (e.g., 900px wide x 1200px high - a 3:4 ratio)
@@ -113,7 +108,7 @@ class NewsController extends Controller
             $news->local_image_path = 'news_images/' . $fileName;
             $news->save();
             //redirect to filament resource
-            return redirect()->route('filament.admin.resources.news-mediastack-items.index')->with('success', 'Image generated successfully.');
+            return redirect()->route('filament.admin.resources.news.index')->with('success', 'Image generated successfully.');
         }
     }
     // ---------- GENERATE IMAGE USING BROWSERSHOT <<<---------- //

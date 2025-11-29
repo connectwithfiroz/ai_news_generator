@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\HtmlString;
+use Illuminate\Support\Facades\Storage;
 class NewsResource extends Resource
 {
     protected static ?string $model = News::class;
@@ -86,7 +87,7 @@ class NewsResource extends Resource
 
                 Tables\Actions\Action::make('generateImage')
                     ->label('Generate Image')
-                    ->url(fn ($record) => route('filament.admin.news.generate-image', $record->id) . '?flag=1')
+                    ->url(fn($record) => route('filament.admin.news.generate-image', $record->id) . '?flag=1')
 
                     ->openUrlInNewTab()   // So async process doesn't block Filament
                     ->visible(
@@ -107,16 +108,21 @@ class NewsResource extends Resource
                 Tables\Actions\Action::make('viewSummary')
                     ->visible(fn($record) => !empty($record->summarize_response))
                     ->modalHeading('Summary')
-                    ->modalSubheading('Generated Summary')
-                    ->modalContent(fn($record) => new HtmlString(nl2br(e($record->summarize_response))))
-                    ->modalWidth('lg')
+                    ->modalContent(function ($record) {
+                        return view('filament.news.modals.summary', compact('record'));
+                    })
+                    ->modalSubmitAction(false)
+                    ->modalWidth('md')
                     ->label('View Summary')
                     ->color('gray'),
 
                 Tables\Actions\Action::make('viewDetails')
                     ->modalHeading('News Details')
-                    ->modalContent(fn($record) => view('filament.news.details', ['record' => $record]))
-                    ->modalWidth('4xl')
+                    ->modalContent(function ($record) {
+                        return view('filament.news.details', compact('record'));
+                    })
+                    ->modalWidth('lg')
+                    ->modalSubmitAction(false)
                     ->label('View Details')
                     ->color('secondary'),
 
