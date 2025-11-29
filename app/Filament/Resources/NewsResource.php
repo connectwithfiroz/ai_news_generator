@@ -14,6 +14,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Facades\Storage;
+use Table\Actions\Action;
+use Filament\Tables\Filters\SelectFilter;
 class NewsResource extends Resource
 {
     protected static ?string $model = News::class;
@@ -31,51 +33,52 @@ class NewsResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->recordAction(null)
             ->columns([
                 Tables\Columns\TextColumn::make('id')->label('#')->sortable(),
 
                 Tables\Columns\TextColumn::make('title')
                     ->label('Title')
                     ->limit(50)
-                    ->searchable(),
-
-                Tables\Columns\ImageColumn::make('response.image')
-                    ->label('Image')
-                    ->size(40)
-                    ->square(),
-
-                Tables\Columns\BadgeColumn::make('process_status')
-                    ->label('Status')
-                    ->colors([
-                        'warning' => 'pending',
-                        'info' => 'summarized',
-                        'success' => 'image_ready',
-                        'primary' => 'published',
-                    ])
-                    ->getStateUsing(function ($record) {
-                        if (empty($record->summarize_response))
-                            return 'pending';
-
-                        if (!empty($record->summarize_response) && empty($record->local_image_path))
-                            return 'summarized';
-
-                        if (
-                            $record->local_image_path &&
-                            !$record->published_at_whatsapp &&
-                            !$record->published_at_facebook &&
-                            !$record->published_at_linkedin
-                        )
-                            return 'image_ready';
-
-                        return 'published';
-                    }),
-
+                    ->searchable()
+                    ->action(
+                        Tables\Actions\Action::make('viewDetails')
+                            ->modalHeading('News Details')
+                            ->modalContent(function ($record) {
+                                return view('filament.news.details', compact('record'));
+                            })
+                            ->modalWidth('lg')
+                            ->modalSubmitAction(false)
+                            ->label('View Details')
+                            ->color('secondary'),
+                    )
+                    ->extraAttributes([
+                        'class' => 'text-primary-600 cursor-pointer hover:underline',
+                    ]),
+                Tables\Columns\ImageColumn::make('response.image')->label('Image')->size(40)->square(),
+                Tables\Columns\BadgeColumn::make('process_status')->label('Status')->colors([
+                    'warning' => 'pending',
+                    'info' => 'summarized',
+                    'success' => 'image_ready',
+                    'primary' => 'published',
+                ])->getStateUsing(function ($record) {
+                    if (empty($record->summarize_response))
+                        return 'pending';
+                    if (!empty($record->summarize_response) && empty($record->local_image_path))
+                        return 'summarized';
+                    if (
+                        $record->local_image_path && !$record->published_at_whatsapp && !$record->published_at_facebook && !$record->published_at_linkedin
+                    )
+                        return 'image_ready';
+                    return 'published';
+                }),
                 Tables\Columns\TextColumn::make('published_at_whatsapp')->label('WhatsApp')->dateTime(),
                 Tables\Columns\TextColumn::make('published_at_facebook')->label('Facebook')->dateTime(),
                 Tables\Columns\TextColumn::make('published_at_linkedin')->label('LinkedIn')->dateTime(),
             ])
 
             ->actions([
+
 
                 Tables\Actions\Action::make('summarize')
                     ->visible(fn($record) => empty($record->summarize_response))
@@ -116,15 +119,7 @@ class NewsResource extends Resource
                     ->label('View Summary')
                     ->color('gray'),
 
-                Tables\Actions\Action::make('viewDetails')
-                    ->modalHeading('News Details')
-                    ->modalContent(function ($record) {
-                        return view('filament.news.details', compact('record'));
-                    })
-                    ->modalWidth('lg')
-                    ->modalSubmitAction(false)
-                    ->label('View Details')
-                    ->color('secondary'),
+
 
                 Tables\Actions\Action::make('publishWhatsapp')
                     ->visible(
@@ -160,6 +155,39 @@ class NewsResource extends Resource
                         fn($record) =>
                         app(\App\Services\PostService::class)->publishLinkedin($record)
                     ),
+            ])
+            ->filters([
+                SelectFilter::make('process_status')
+                    ->label('Status')
+                    ->options([
+                        'pending' => 'Pending',
+                        'summarized' => 'Summarized',
+                        'image_ready' => 'Image Ready',
+                        'published' => 'Published',
+                    ])
+                    ->query(function ($query, $data) {
+                        // $data['value'] is the selected filter value
+                        $value = $data['value'] ?? null;
+
+                        if ($value === 'pending') {
+                            $query->whereNull('summarize_response');
+                        } elseif ($value === 'summarized') {
+                            $query->whereNotNull('summarize_response')
+                                ->whereNull('local_image_path');
+                        } elseif ($value === 'image_ready') {
+                            $query->whereNotNull('local_image_path')
+                                ->whereNull('published_at_whatsapp')
+                                ->whereNull('published_at_facebook')
+                                ->whereNull('published_at_linkedin');
+                        } elseif ($value === 'published') {
+                            $query->whereNotNull('local_image_path')
+                                ->where(function ($q) {
+                                    $q->whereNotNull('published_at_whatsapp')
+                                        ->orWhereNotNull('published_at_facebook')
+                                        ->orWhereNotNull('published_at_linkedin');
+                                });
+                        }
+                    })
             ]);
     }
 
