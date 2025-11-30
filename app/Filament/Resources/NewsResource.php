@@ -16,6 +16,7 @@ use Illuminate\Support\HtmlString;
 use Illuminate\Support\Facades\Storage;
 use Table\Actions\Action;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Columns\ToggleColumn;
 class NewsResource extends Resource
 {
     protected static ?string $model = News::class;
@@ -36,6 +37,22 @@ class NewsResource extends Resource
             ->recordAction(null)
             ->columns([
                 Tables\Columns\TextColumn::make('id')->label('#')->sortable(),
+                ToggleColumn::make('mark_as_post')
+                    ->label('Post?')
+                    ->onColor('success')
+                    ->offColor('gray')
+                    ->updateStateUsing(function ($record, $state) {
+                        $record->mark_as_post = $state;
+                        $record->save();
+                    }),
+                ToggleColumn::make('selected_for_post')
+                    ->label('Select?')
+                    ->onColor('primary')
+                    ->offColor('gray')
+                    ->updateStateUsing(function ($record, $state) {
+                        $record->selected_for_post = $state;
+                        $record->save();
+                    }),
 
                 Tables\Columns\TextColumn::make('title')
                     ->label('Title')
@@ -106,7 +123,17 @@ class NewsResource extends Resource
                     ->modalContent(fn($record) => new HtmlString('<img src="' . Storage::url($record->local_image_path) . '" alt="Generated Image" style="max-width:100%;">'))
                     ->modalWidth('md')
                     ->label('View Image')
-                    ->color('gray'),
+                    ->color('gray')
+                    ->extraModalFooterActions([
+                        Tables\Actions\Action::make('download')
+                            ->label('Download')
+                            ->color('primary')
+                            ->action(function ($record) {
+                                return response()->download(
+                                    Storage::disk('public')->path($record->local_image_path)
+                                );
+                            }),
+                    ]),
 
                 Tables\Actions\Action::make('viewSummary')
                     ->visible(fn($record) => !empty($record->summarize_response))
@@ -163,32 +190,62 @@ class NewsResource extends Resource
                         'pending' => 'Pending',
                         'summarized' => 'Summarized',
                         'image_ready' => 'Image Ready',
-                        'published' => 'Published',
+                        'selected' => 'Selected for Post',
+                        'mark_as_post' => 'Mark as Post',
+
+                        // NEW publish options
+                        'published_whatsapp' => 'Published on WhatsApp',
+                        'published_facebook' => 'Published on Facebook',
+                        'published_linkedin' => 'Published on LinkedIn',
+
+                        'published_any' => 'Published (Any Platform)',
                     ])
                     ->query(function ($query, $data) {
-                        // $data['value'] is the selected filter value
-                        $value = $data['value'] ?? null;
+                        $v = $data['value'] ?? null;
 
-                        if ($value === 'pending') {
-                            $query->whereNull('summarize_response');
-                        } elseif ($value === 'summarized') {
-                            $query->whereNotNull('summarize_response')
-                                ->whereNull('local_image_path');
-                        } elseif ($value === 'image_ready') {
-                            $query->whereNotNull('local_image_path')
-                                ->whereNull('published_at_whatsapp')
-                                ->whereNull('published_at_facebook')
-                                ->whereNull('published_at_linkedin');
-                        } elseif ($value === 'published') {
-                            $query->whereNotNull('local_image_path')
-                                ->where(function ($q) {
+                        switch ($v) {
+
+                            case 'pending':
+                                return $query->whereNull('summarize_response');
+
+                            case 'summarized':
+                                return $query->whereNotNull('summarize_response')
+                                    ->whereNull('local_image_path');
+
+                            case 'image_ready':
+                                return $query->whereNotNull('local_image_path')
+                                    ->whereNull('published_at_whatsapp')
+                                    ->whereNull('published_at_facebook')
+                                    ->whereNull('published_at_linkedin');
+
+                            case 'selected':
+                                return $query->where('selected_for_post', true);
+
+                            case 'mark_as_post':
+                                return $query->where('mark_as_post', true);
+
+                            case 'published_whatsapp':
+                                return $query->whereNotNull('published_at_whatsapp');
+
+                            case 'published_facebook':
+                                return $query->whereNotNull('published_at_facebook');
+
+                            case 'published_linkedin':
+                                return $query->whereNotNull('published_at_linkedin');
+
+                            case 'published_any':
+                                return $query->where(function ($q) {
                                     $q->whereNotNull('published_at_whatsapp')
                                         ->orWhereNotNull('published_at_facebook')
                                         ->orWhereNotNull('published_at_linkedin');
                                 });
+
+                            default:
+                                return $query;
                         }
-                    })
-            ]);
+                    }),
+            ])
+        ;
     }
 
     public static function getRelations(): array
