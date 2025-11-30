@@ -19,14 +19,19 @@ class PostService
 
     public function publishFacebook($record)
     {
+        $summarize_title = $record->rewritten_title ?? $record->summarize_response_json['title'] ?? '';
+        $summarize_description = $record->rewritten_description ?? $record->summarize_response_json['description'] ?? '';
+        $source = $record->response['url'] ?? '';
+        if ($source) {
+            $source = "\nSource URL- $source";
+        }
         // Build the caption
-        $caption = $record->response['title'] . " - " .
-            $record->summarize_response . " - " .
-            $record->response['url'];
+        $caption = ($summarize_title ?? '') . " \n\n" . ($summarize_description ?? '') . $source;
+        
 
         // Decide image URL
         $imageUrl = $record->local_image_path
-            ? asset('storage/' . $record->local_image_path)
+            ? asset('storage/news_images/' . $record->local_image_path)
             : $record->response['image'];
 
         // Facebook Page credentials
@@ -37,7 +42,7 @@ class PostService
             $response = Http::retry(3, 800)
                 ->timeout(30)
                 ->withoutVerifying() // Local XAMPP SSL fix
-                ->post("https://graph.facebook.com/v17.0/{$pageId}/photos", [
+                ->post("https://graph.facebook.com/v24.0/{$pageId}/photos", [
                     'url' => $imageUrl,
                     'caption' => $caption,
                     'access_token' => $pageToken,
@@ -55,10 +60,6 @@ class PostService
             return ['ok' => false, 'error' => $e->getMessage()];
         }
     }
-
-
-
-
 
 
 
