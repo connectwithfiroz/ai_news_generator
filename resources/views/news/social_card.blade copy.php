@@ -146,7 +146,7 @@
         <div class="image-container">
 
             @if(!empty($category))
-                <div class="category">Trending</div>
+                <div class="category">{{$category}}</div>
             @endif
 
             <div class="image-part">

@@ -64,8 +64,8 @@ class NewsResource extends Resource
                             ->modalContent(function ($record) {
                                 return view('filament.news.details', compact('record'));
                             })
-                            ->modalWidth('lg')
-                            ->modalSubmitAction(false)
+                            ->modalWidth('7xl')
+                            ->modalSubmitAction(action: false)
                             ->label('View Details')
                             ->color('secondary'),
                     )

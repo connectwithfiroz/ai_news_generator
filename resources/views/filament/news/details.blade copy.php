@@ -1,19 +1,14 @@
 @php
-    $summarize_title = $record->rewritten_title ?? $record->summarize_response_json['title'] ?? '';
-    $summarize_description = $record->rewritten_description ?? $record->summarize_response_json['description'] ?? '';
-    $source = $record->response['url'] ?? '';
-    if($source){
-        $source = "\nSource URL- $source";
-    }
-    $copy_data = ($summarize_title ?? '') . " \n\n" . ($summarize_description ?? '')  . $source;
+$summarize_title = $record->rewritten_title ?? $record->summarize_response_json['title'] ?? '';
+$summarize_description = $record->rewritten_description ?? $record->summarize_response_json['description'] ?? '';
 @endphp
-<div class="w-full block">
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="w-full block" x-data="{ text: `{{ $record->title }}\n\n{{ $record->description }}` }">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {{-- LEFT CONTENT --}}
         <div class="space-y-4">
             {{-- Image --}}
             @if(!empty($record->response['image']))
-                <img src="{{ $record->response['image'] }}" alt="news image" class="w-full rounded-md shadow">
+            <img src="{{ $record->response['image'] }}" alt="news image" class="w-full rounded-md shadow">
             @endif
 
 
@@ -76,9 +71,9 @@
                     <span class="font-medium">Published At:</span>
                     <span>
                         {{ isset($record->response['published_at'])
-    ? \Carbon\Carbon::parse($record->response['published_at'])->format('d M Y, H:i')
-    : 'N/A'
-                    }}
+                        ? \Carbon\Carbon::parse($record->response['published_at'])->format('d M Y, H:i')
+                        : 'N/A'
+                        }}
                     </span>
                 </div>
 
@@ -100,40 +95,37 @@
         <div class="space-y-4">
             {{-- Local processed image --}}
             @if($record->local_image_path)
-                <div class="mt-6">
-                    <h3 class="text-lg font-semibold mb-1">Generated Image Preview:</h3>
-                    <img src="{{ asset('storage/' . $record->local_image_path) }}" class="w-full rounded-md shadow">
-                </div>
+            <div class="mt-6">
+                <h3 class="text-lg font-semibold mb-1">Generated Image Preview:</h3>
+                <img src="{{ asset('storage/' . $record->local_image_path) }}" class="w-full rounded-md shadow">
+            </div>
             @endif
             @if(!empty($summarize_title) || !empty($summarize_description))
-                <div class="final-section p-4 border border-gray-300 rounded-lg">
+            <div class="final-section p-4 border border-gray-300 rounded-lg">
 
-                    <h2 class="text-lg font-bold mb-3">Final (For Posting)</h2>
+                <h2 class="text-lg font-bold mb-3">Final (For Posting)</h2>
 
-                    {{-- Title (Bold + bigger) --}}
-                    @if(!empty($summarize_title))
-                        <h3 class="text-xl font-semibold mb-2">
-                            {{ $summarize_title }}
-                        </h3>
-                    @endif
+                {{-- Title (Bold + bigger) --}}
+                @if(!empty($summarize_title))
+                <h3 class="text-xl font-semibold mb-2">
+                    {{ $summarize_title }}
+                </h3>
+                @endif
 
-                    {{-- Description with spacing + readable formatting --}}
-                    @if(!empty($summarize_description))
-                        <p class="leading-relaxed text-gray-800 mb-4 whitespace-pre-line">
-                            {{ $summarize_description }}
-                        </p>
-                    @endif
-                    {{ $source }}
+                {{-- Description with spacing + readable formatting --}}
+                @if(!empty($summarize_description))
+                <p class="leading-relaxed text-gray-800 mb-4 whitespace-pre-line">
+                    {{ $summarize_description }}
+                </p>
+                @endif
 
-                    {{-- Copy button --}}
-                    <button x-data x-on:click="navigator.clipboard.writeText($el.dataset.copy)"
-                        data-copy="{{ $copy_data }}"
-                        class="bg-indigo-600 text-white px-4 py-2 rounded w-full text-center">
-                        Copy for Facebook/LinkedIn
-                    </button>
+                {{-- Copy button --}}
+                <button @click="navigator.clipboard.writeText(text)" class="px-3 py-2 bg-blue-500 text-white rounded">
+                    Copy
+                </button>
 
 
-                </div>
+            </div>
             @endif
 
         </div>
