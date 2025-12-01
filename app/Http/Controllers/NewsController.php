@@ -120,6 +120,7 @@ class NewsController extends Controller
         try {
             // Request URL (your static or configurable endpoint)
             $url = "https://inshorts.com/api/hi/search/trending_topics/national?page=1&type=NEWS_CATEGORY";
+            $url = "https://inshorts.com/api/hi/search/trending_topics";
 
             // 1. Fetch API response
             $response = Http::withHeaders([
