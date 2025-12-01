@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Gemini\Laravel\Facades\Gemini;
+use Log;
 use Spatie\Browsershot\Browsershot;
 use App\Models\News;
 use Illuminate\Support\Facades\Http;
@@ -115,12 +116,26 @@ class NewsController extends Controller
 
 
     // FETCH INSHORT NEWS USING API >>>--------------//
-    public function fetchInshortNewsAndStore()
+    public function fetchInshortNewsAndStore($params = [])
     {
         try {
-            // Request URL (your static or configurable endpoint)
-            $url = "https://inshorts.com/api/hi/search/trending_topics/national?page=1&type=NEWS_CATEGORY";
-            $url = "https://inshorts.com/api/hi/search/trending_topics";
+            $category = $params['category'] ?? 'top_stories';
+
+            switch ($category) {
+                case 'technology':
+                    $url = "https://inshorts.com/api/hi/search/trending_topics/technology?page=1&type=NEWS_CATEGORY";
+                    break;
+
+                case 'hatke':
+                    $url = "https://inshorts.com/api/hi/search/trending_topics/hatke?page=1&type=NEWS_CATEGORY";
+                    break;
+
+                default:
+                    // Default: top stories
+                    $url = "https://inshorts.com/api/hi/news?category=top_stories&max_limit=10&include_card_data=true";
+                    break;
+            }
+
 
             // 1. Fetch API response
             $response = Http::withHeaders([
@@ -151,11 +166,13 @@ class NewsController extends Controller
 
                 // Prevent duplicate insert by hash_id
                 $exists = News::where('original_image_url', $img)
-                    ->where('response->news_obj->hash_id', $news['hash_id'])
+                    ->where('response->news_obj->unique_id', $news['hash_id'])
                     ->exists();
 
-                if ($exists)
+                if ($exists) {
+                    Log::info('exist');
                     continue;
+                }
 
                 //mapped fields
                 // Map NewsAPI fields to Mediastack-style fields
