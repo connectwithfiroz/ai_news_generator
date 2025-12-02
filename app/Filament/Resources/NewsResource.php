@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Facades\Storage;
-use Table\Actions\Action;
+use Filament\Table\Actions\Action;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Columns\ToggleColumn;
 class NewsResource extends Resource
@@ -182,6 +182,18 @@ class NewsResource extends Resource
                         fn($record) =>
                         app(\App\Services\PostService::class)->publishLinkedin($record)
                     ),
+                // delete
+                Tables\Actions\Action::make('softDelete')
+                ->label('Delete')
+                ->color('danger')
+                ->icon('heroicon-o-trash')
+                ->requiresConfirmation()
+                ->action(function ($record) {
+                    $record->update([
+                        'deleted_at' => now(),
+                    ]);
+                }),
+
             ])
             ->filters([
                 SelectFilter::make('process_status')
