@@ -19,47 +19,50 @@ class PostService
 
     public function publishFacebook($record)
     {
-        $summarize_title = $record->rewritten_title ?? $record->summarize_response_json['title'] ?? '';
-        $summarize_description = $record->rewritten_description ?? $record->summarize_response_json['description'] ?? '';
-        $source = $record->response['url'] ?? '';
-        if ($source) {
-            $source = "\nSource URL- $source";
-        }
-        // Build the caption
-        $caption = ($summarize_title ?? '') . " \n\n" . ($summarize_description ?? '') . $source;
-        
+        $summarize_title = $record->rewritten_title
+            ?? ($record->summarize_response_json['title'] ?? '');
 
-        // Decide image URL
+        $summarize_description = $record->rewritten_description
+            ?? ($record->summarize_response_json['description'] ?? '');
+
+        $source = $record->response['url']
+            ? "\nSource URL - " . $record->response['url']
+            : '';
+
+        $caption = $summarize_title . "\n\n" . $summarize_description . $source;
+
+        // Image
         $imageUrl = $record->local_image_path
             ? asset('storage/news_images/' . $record->local_image_path)
             : $record->response['image'];
 
-        // Facebook Page credentials
         $pageId = config('services.facebook.page_id');
-        $pageToken = config('services.facebook.page_token'); // Must be Page Access Token
+        $pageToken = config('services.facebook.page_token');
+
+        \Log::info($caption);
 
         try {
-            $response = Http::retry(3, 800)
-                ->timeout(30)
-                ->withoutVerifying() // Local XAMPP SSL fix
+            $response = Http::retry(3, 500)
+                ->timeout(20)
                 ->post("https://graph.facebook.com/v24.0/{$pageId}/photos", [
+                    'access_token' => $pageToken,
                     'url' => $imageUrl,
                     'caption' => $caption,
-                    'access_token' => $pageToken,
                 ]);
 
-            $data = $response->json();
-
+            \Log::info("facebook- ", json_encode($response));
             if ($response->successful()) {
-                return ['ok' => true, 'data' => $data];
-            } else {
-                return ['ok' => false, 'error' => $data];
+                //log
+                return ['ok' => true, 'data' => $response->json()];
             }
+
+            return ['ok' => false, 'error' => $response->json()];
 
         } catch (\Exception $e) {
             return ['ok' => false, 'error' => $e->getMessage()];
         }
     }
+
 
 
 

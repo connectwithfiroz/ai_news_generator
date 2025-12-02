@@ -17,18 +17,6 @@
             @endif
 
 
-            {{-- Summary --}}
-            <h6 class="text-center text-blue-600 m-1 p-1">Summarize</h6>
-            <div class="space-y-2">
-                <h2 class="text-lg font-semibold">
-                    {{ $summarize_title }}
-                </h2>
-
-                <p class="text-sm whitespace-pre-line">
-                    {{ $summarize_description }}
-                </p>
-            </div>
-
 
             <h6 class="text-center text-blue-600 m-1 p-1">Original</h6>
             {{-- Title --}}
