@@ -129,10 +129,13 @@ class NewsController extends Controller
                 case 'hatke':
                     $url = "https://inshorts.com/api/hi/search/trending_topics/hatke?page=2&type=NEWS_CATEGORY";
                     break;
+                case 'top_stories':
+                    $url = "https://inshorts.com/api/hi/news?category=top_stories&max_limit=50&include_card_data=true";
+                    break;
 
                 default:
                     // Default: top stories
-                    $url = "https://inshorts.com/api/hi/news?category=top_stories&max_limit=10&include_card_data=true";
+                    $url = "https://inshorts.com/api/hi/news?category=top_stories&max_limit=50&include_card_data=true";
                     break;
             }
 
@@ -165,8 +168,7 @@ class NewsController extends Controller
                 $img = $news['image_url'] ?? null;
 
                 // Prevent duplicate insert by hash_id
-                $exists = News::where('original_image_url', $img)
-                    ->where('response->news_obj->unique_id', $news['hash_id'])
+                $exists = News::where('response->unique_id', $news['hash_id'])
                     ->exists();
 
                 if ($exists) {
