@@ -127,7 +127,7 @@ class NewsController extends Controller
                     break;
 
                 case 'hatke':
-                    $url = "https://inshorts.com/api/hi/search/trending_topics/hatke?page=1&type=NEWS_CATEGORY";
+                    $url = "https://inshorts.com/api/hi/search/trending_topics/hatke?page=2&type=NEWS_CATEGORY";
                     break;
 
                 default:
