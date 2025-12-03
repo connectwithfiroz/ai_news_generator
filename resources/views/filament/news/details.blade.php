@@ -116,7 +116,15 @@
                     {{-- Copy button --}}
                     <button x-data x-on:click="navigator.clipboard.writeText($el.dataset.copy)"
                         data-copy="{{ $copy_data }}"
-                        class="bg-indigo-600 text-white px-4 py-2 rounded w-full text-center">
+                        class="bg-indigo-600 text-white px-4 py-2 rounded w-full text-center"  style="
+    background-color:#4f46e5;
+    color:white;
+    padding:8px 16px;
+    border-radius:6px;
+    width:100%;
+    text-align:center;
+    display:block;
+">
                         Copy for Facebook/LinkedIn
                     </button>
 

@@ -49,6 +49,7 @@ class PostService
                     'url' => $imageUrl,
                     'caption' => $caption,
                 ]);
+            dd($response);
 
             \Log::info("facebook- ", json_encode($response));
             if ($response->successful()) {
