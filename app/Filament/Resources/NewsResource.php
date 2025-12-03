@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Storage;
 use Filament\Table\Actions\Action;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Columns\ToggleColumn;
+use Filament\Notifications\Notification;
 class NewsResource extends Resource
 {
     protected static ?string $model = News::class;
@@ -167,8 +168,23 @@ class NewsResource extends Resource
                         empty($record->published_at_facebook)
                     )
                     ->action(
-                        fn($record) =>
-                        app(\App\Services\PostService::class)->publishFacebook($record)
+                        function ($record) {
+                            $result = app(\App\Services\PostService::class)->publishFacebook($record);
+
+                            if ($result['ok']) {
+                                Notification::make()
+                                    ->title('Facebook Published Successfully')
+                                    ->success()
+                                    ->body($result['message'] ?? 'Message sent!')
+                                    ->send();
+                            } else {
+                                Notification::make()
+                                    ->title('Facebook Publish Failed')
+                                    ->danger()
+                                    ->body($result['error'] ?? 'Unable to send message.')
+                                    ->send();
+                            }
+                        }
                     )
                     ->color('primary'),
 
@@ -184,15 +200,15 @@ class NewsResource extends Resource
                     ),
                 // delete
                 Tables\Actions\Action::make('softDelete')
-                ->label('Delete')
-                ->color('danger')
-                ->icon('heroicon-o-trash')
-                ->requiresConfirmation()
-                ->action(function ($record) {
-                    $record->update([
-                        'deleted_at' => now(),
-                    ]);
-                }),
+                    ->label('Delete')
+                    ->color('danger')
+                    ->icon('heroicon-o-trash')
+                    ->requiresConfirmation()
+                    ->action(function ($record) {
+                        $record->update([
+                            'deleted_at' => now(),
+                        ]);
+                    }),
 
             ])
             ->filters([

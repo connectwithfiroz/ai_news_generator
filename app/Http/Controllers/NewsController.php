@@ -130,7 +130,7 @@ class NewsController extends Controller
                     $url = "https://inshorts.com/api/hi/search/trending_topics/hatke?page=2&type=NEWS_CATEGORY";
                     break;
                 case 'top_stories':
-                    $url = "https://inshorts.com/api/hi/news?category=top_stories&max_limit=50&include_card_data=true";
+                    $url = "https://inshorts.com/api/hi/news?category=top_stories&max_limit=80&include_card_data=true";
                     break;
 
                 default:
@@ -178,13 +178,15 @@ class NewsController extends Controller
 
                 //mapped fields
                 // Map NewsAPI fields to Mediastack-style fields
+                $source_url = $news['source_url'] ?? null;
+                $clean_source_url = strtok($source_url, '?');
                 $mapped = [
                     "unique_id" => $news['hash_id'] ?? null,
                     "author" => $news['author_name'] ?? null,
                     "title" => $news['title'] ?? null,
                     "description" => $news['content'] ?? null,
                     "url" => $news['source_url'] ?? null,
-                    "source" => $news['source_name'] ?? null,
+                    "source" => $clean_source_url,
                     "image" => $news['image_url'] ?? null,
                     "category" => $news['category_names'] ? implode(',', $news['category_names']) : null,
                     "language" => "en",
