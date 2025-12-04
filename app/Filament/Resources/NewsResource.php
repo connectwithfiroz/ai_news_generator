@@ -122,7 +122,7 @@ class NewsResource extends Resource
                                 '1' => 'Social Card 2',
                                 '2' => 'Social Card 3',
                             ])
-                            ->required(),
+                            ,
                     ])
                     ->action(function ($data, $record) {
                         // Build redirect URL with selected template

@@ -121,7 +121,7 @@ class NewsController extends Controller
         }
         $html = view($social_template, data:
             compact('image_url', 'title', 'description', 'category', 'source', 'flag'))->render();
-        return $html;
+        // return $html;
         // Generate image
         Browsershot::html($html)
             // 🚨 CHANGE 1: Use a vertical, mobile-friendly window size (e.g., 900px wide x 1200px high - a 3:4 ratio)
