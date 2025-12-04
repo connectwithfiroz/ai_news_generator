@@ -123,19 +123,20 @@ class NewsController extends Controller
 
             switch ($category) {
                 case 'technology':
-                    $url = "https://inshorts.com/api/hi/search/trending_topics/technology?page=1&type=NEWS_CATEGORY";
+                    $url = "https://inshorts.com/api/hi/search/trending_topics/technology";
                     break;
 
                 case 'hatke':
-                    $url = "https://inshorts.com/api/hi/search/trending_topics/hatke?page=2&type=NEWS_CATEGORY";
+                    $url = "https://inshorts.com/api/hi/search/trending_topics/hatke";
                     break;
                 case 'top_stories':
-                    $url = "https://inshorts.com/api/hi/news?category=top_stories&max_limit=80&include_card_data=true";
+                    // $url = "https://inshorts.com/api/hi/news?category=top_stories&max_limit=80&include_card_data=true";
+                    $url = "https://inshorts.com/api/hi/news?category=top_stories&include_card_data=true";
                     break;
 
                 default:
                     // Default: top stories
-                    $url = "https://inshorts.com/api/hi/news?category=top_stories&max_limit=50&include_card_data=true";
+                    $url = "https://inshorts.com/api/hi/news?category=top_stories&include_card_data=true";
                     break;
             }
 
@@ -172,7 +173,6 @@ class NewsController extends Controller
                     ->exists();
 
                 if ($exists) {
-                    Log::info('exist');
                     continue;
                 }
 

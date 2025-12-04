@@ -16,56 +16,6 @@ class PostService
         // convert "news/abc.jpg" → full public URL
         return asset('storage/' . ltrim($path, '/'));
     }
-    // use Illuminate\Support\Facades\Http;
-
-    // public function publishFacebook($record)
-    // {
-    //     $summarize_title = $record->rewritten_title
-    //         ?? ($record->summarize_response_json['title'] ?? '');
-
-    //     $summarize_description = $record->rewritten_description
-    //         ?? ($record->summarize_response_json['description'] ?? '');
-
-    //     $source = $record->response['url']
-    //         ? "\nSource URL - " . $record->response['url']
-    //         : '';
-
-    //     $caption = $summarize_title . "\n\n" . $summarize_description . $source;
-
-    //     // Image
-    //     $imageUrl = $record->local_image_path
-    //         ? asset('storage/news_images/' . $record->local_image_path)
-    //         : $record->response['image'];
-
-    //     $pageId = config('services.facebook.page_id');
-    //     $pageToken = config('services.facebook.page_token');
-
-
-
-    //     try {
-    //         $response = Http::retry(3, 500)
-    //             ->timeout(20)
-    //             ->post("https://graph.facebook.com/v24.0/{$pageId}/photos", [
-    //                 'access_token' => $pageToken,
-    //                 'url' => $imageUrl,
-    //                 'caption' => $caption,
-    //             ]);
-    //         //
-    //         file_put_contents('test_reponse.json', $response);
-    //         dd($response);
-
-    //         \Log::info("facebook- ", json_encode($response));
-    //         if ($response->successful()) {
-    //             //log
-    //             return ['ok' => true, 'data' => $response->json()];
-    //         }
-
-    //         return ['ok' => false, 'error' => $response->json()];
-
-    //     } catch (\Exception $e) {
-    //         return ['ok' => false, 'error' => $e->getMessage()];
-    //     }
-    // }
     public function publishFacebook($record)
     {
         $pageId = config('services.facebook.page_id');
