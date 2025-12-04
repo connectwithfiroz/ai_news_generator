@@ -35,6 +35,7 @@ class PostService
 
         // FULL local path
         $localPath = storage_path('app/public/' . $record->local_image_path);
+
         // Check file exists
         if (!file_exists($localPath)) {
             $error = "File not found: " . $localPath;
@@ -43,39 +44,62 @@ class PostService
         }
 
         try {
+            // Read the file contents (avoids "resource (closed)" issues)
+            $fileContents = file_get_contents($localPath);
+            if ($fileContents === false) {
+                $error = "Failed to read file: " . $localPath;
+                \Log::error("Facebook Error - {$error}");
+                return ['ok' => false, 'error' => $error];
+            }
 
-            $response = Http::retry(3, 2000)
-                ->timeout(60)
+            $response = Http::asMultipart()
+                ->retry(3, 2000)        // number of retries and wait ms
+                ->connectTimeout(30)    // optional: connection timeout
+                ->timeout(120)          // increase overall timeout for uploads
                 ->attach(
                     'source',
-                    fopen($localPath, 'r'),
-                    $record->local_image_path
+                    $fileContents,
+                    basename($localPath)
                 )
                 ->post("https://graph.facebook.com/v24.0/{$pageId}/photos", [
                     'access_token' => $pageToken,
                     'caption' => $caption,
                 ]);
 
-
-            // file_put_contents('fb_debug.json', $response->body()); // 🔥 REAL RESPONSE
-            // dd($response->json());
-
-            // after debugging, replace dd() with:
-            if ($response->successful()) {
-                $data = $response->json();
-
-                $record->update([
-                    'published_at_facebook' => now(),
-                    'published_url_facebook' => "https://www.facebook.com/{$data['post_id']}",
+            // Log full HTTP body for debugging if not successful (careful with tokens in logs)
+            if (!$response->successful()) {
+                \Log::error('Facebook upload failed', [
+                    'status' => $response->status(),
+                    'body' => $response->body(),
                 ]);
-
-                return ['ok' => true, 'data' => $data];
+                return ['ok' => false, 'error' => 'Facebook API error', 'details' => $response->body()];
             }
 
+            $data = $response->json();
+
+            // Ensure expected key exists before using
+            if (!isset($data['post_id']) && !isset($data['id'])) {
+                \Log::warning('Facebook response missing post id', ['response' => $data]);
+            }
+
+            $record->update([
+                'published_at_facebook' => now(),
+                // Some endpoints return 'post_id' or 'id' — handle both
+                'published_url_facebook' => isset($data['post_id'])
+                    ? "https://www.facebook.com/{$data['post_id']}"
+                    : (isset($data['id']) ? "https://www.facebook.com/{$data['id']}" : null),
+            ]);
+
+            return ['ok' => true, 'data' => $data];
+
         } catch (\Exception $e) {
-            \Log::error("Facebook Error - {$e->getMessage()}");
+            \Log::error("Facebook Error - {$e->getMessage()}", [
+                'exception' => $e,
+                'file' => $localPath,
+            ]);
             return ['ok' => false, 'error' => $e->getMessage()];
         }
+
     }
 
 
