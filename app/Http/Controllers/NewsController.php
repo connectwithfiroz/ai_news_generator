@@ -46,9 +46,30 @@ class NewsController extends Controller
     // ---------- SUMMARIZE IN HINDI USING GEMINI API <<<---------- //
 
     // ---------- GENERATE IMAGE USING BROWSERSHOT >>>---------- //
+    private function circularTemplate($template_files)
+    {
+
+        // total count
+        $total = count($template_files);
+
+        // get last index from cookie (default -1)
+        $lastIndex = request()->cookie('social_template_index', -1);
+
+        // calculate next index
+        $nextIndex = ($lastIndex + 1) % $total;
+
+        // pick template
+        $selectedTemplate = $template_files[$nextIndex];
+
+        // set cookie for next request (valid for 30 days)
+        cookie()->queue('social_template_index', $nextIndex, 60 * 24 * 30);
+
+        return $selectedTemplate;
+    }
     public function generateImageWithBrowsershot(Request $request, $news_id)
     {
         $flag = $request->get('flag', null);
+        $template = $request->get('template', null);
         $news = News::find($news_id);
         $response = $news->response ?? [];
         $image_url = $news->original_image_url ?? $news->response['image'] ?? '';
@@ -87,9 +108,20 @@ class NewsController extends Controller
         $filePath = storage_path('app/public/news_images/' . $fileName);
 
         //USE COMPACT SYNTAX IF KEY AND VARIABLE NAME ARE SAME
-        $html = view('news.social_card', data:
+        $template_files = ['news.social_card1', 'news.social_card2', 'news.social_card3'];
+        if(empty($template)){
+            //pick reandom any
+            $social_template = $template_files[0];
+            $social_template = $template_files[1];
+            // $social_template = $template_files[2];
+            // $social_template = $template_files[array_rand($template_files)];
+            // $social_template = $this->circularTemplate($template_files); //selecte 1, 2, 3.. if last start from 1
+        }else{
+            $social_template = $template_files[$template];
+        }
+        $html = view($social_template, data:
             compact('image_url', 'title', 'description', 'category', 'source', 'flag'))->render();
-        // return $html;
+        return $html;
         // Generate image
         Browsershot::html($html)
             // 🚨 CHANGE 1: Use a vertical, mobile-friendly window size (e.g., 900px wide x 1200px high - a 3:4 ratio)
@@ -144,7 +176,8 @@ class NewsController extends Controller
             // 1. Fetch API response
             $response = Http::withHeaders([
                 'Accept' => 'application/json'
-            ])->get($url);
+            ])->timeout(120)  // increase timeout (in seconds)
+                ->get($url);
 
             if (!$response->successful()) {
                 return response()->json(['status' => false, 'message' => 'API failed'], 500);
@@ -185,8 +218,8 @@ class NewsController extends Controller
                     "author" => $news['author_name'] ?? null,
                     "title" => $news['title'] ?? null,
                     "description" => $news['content'] ?? null,
-                    "url" => $news['source_url'] ?? null,
-                    "source" => $clean_source_url,
+                    "url" => $source_url,
+                    "source" => $news['source_name'] ?? null,
                     "image" => $news['image_url'] ?? null,
                     "category" => $news['category_names'] ? implode(',', $news['category_names']) : null,
                     "language" => "en",

@@ -108,15 +108,31 @@ class NewsResource extends Resource
 
                 Tables\Actions\Action::make('generateImage')
                     ->label('Generate Image')
-                    ->url(fn($record) => route('filament.admin.news.generate-image', $record->id) . '?flag=1')
-
-                    ->openUrlInNewTab()   // So async process doesn't block Filament
+                    ->color('info')
                     ->visible(
                         fn($record) =>
                         !empty($record->summarize_response) &&
                         empty($record->local_image_path)
                     )
-                    ->color('info'),
+                    ->form([
+                        Forms\Components\Select::make('template')
+                            ->label('Select Template')
+                            ->options([
+                                '0' => 'Social Card 1',
+                                '1' => 'Social Card 2',
+                                '2' => 'Social Card 3',
+                            ])
+                            ->required(),
+                    ])
+                    ->action(function ($data, $record) {
+                        // Build redirect URL with selected template
+                        $url = route('filament.admin.news.generate-image', $record->id)
+                            . '?flag=1&template=' . urlencode($data['template']);
+
+                        return redirect()->away($url);
+                    })
+                    ->modalHeading('Choose a Template')
+                    ->modalButton('Proceed'),
 
                 Tables\Actions\Action::make('viewGeneratedImage')
                     ->visible(fn($record) => !empty($record->local_image_path))
