@@ -111,8 +111,7 @@ class NewsResource extends Resource
                     ->color('info')
                     ->visible(
                         fn($record) =>
-                        !empty($record->summarize_response) &&
-                        empty($record->local_image_path)
+                        !empty($record->summarize_response)
                     )
                     ->form([
                         Forms\Components\Select::make('template')

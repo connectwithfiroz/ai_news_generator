@@ -109,7 +109,7 @@ class NewsController extends Controller
 
         //USE COMPACT SYNTAX IF KEY AND VARIABLE NAME ARE SAME
         $template_files = ['news.social_card1', 'news.social_card2', 'news.social_card3'];
-        if(empty($template)){
+        if(!isset($template)){
             //pick reandom any
             $social_template = $template_files[0];
             $social_template = $template_files[1];
@@ -218,7 +218,7 @@ class NewsController extends Controller
                     "author" => $news['author_name'] ?? null,
                     "title" => $news['title'] ?? null,
                     "description" => $news['content'] ?? null,
-                    "url" => $source_url,
+                    "url" => $clean_source_url,
                     "source" => $news['source_name'] ?? null,
                     "image" => $news['image_url'] ?? null,
                     "category" => $news['category_names'] ? implode(',', $news['category_names']) : null,
