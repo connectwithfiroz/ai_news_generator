@@ -26,7 +26,7 @@
             /* Default text color is white for overlay */
             overflow: hidden;
             border-radius: 0.75rem;
-            box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.2);
             position: relative;
             /* Essential for absolute positioning of text/footer */
         }

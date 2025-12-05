@@ -54,7 +54,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            opacity: 0.5; /* Make image very subtle */
+            opacity: 0.4; /* Make image very subtle */
         }
         
         .bg {
