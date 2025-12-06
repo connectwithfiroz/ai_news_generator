@@ -111,8 +111,7 @@ class NewsResource extends Resource
                     ->color('info')
                     ->visible(
                         fn($record) =>
-                        !empty($record->summarize_response) &&
-                        empty($record->local_image_path)
+                        !empty($record->summarize_response)
                     )
                     ->form([
                         Forms\Components\Select::make('template')
@@ -121,6 +120,7 @@ class NewsResource extends Resource
                                 '0' => 'Social Card 1(Image, (Title & Description)',
                                 '1' => 'Social Card 2 (Only Title)',
                                 '2' => 'Social Card 3 (Image in background)',
+                                '3' => 'Social Card 4 (Image on top)',
                             ])
                             ,
                     ])

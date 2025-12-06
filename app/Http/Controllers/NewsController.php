@@ -108,8 +108,8 @@ class NewsController extends Controller
         $filePath = storage_path('app/public/news_images/' . $fileName);
 
         //USE COMPACT SYNTAX IF KEY AND VARIABLE NAME ARE SAME
-        $template_files = ['news.social_card1', 'news.social_card2', 'news.social_card3'];
-        if(empty($template)){
+        $template_files = ['news.social_card1', 'news.social_card2', 'news.social_card3', 'news.social_card4'];
+        if(!isset($template)){
             //pick reandom any
             $social_template = $template_files[0];
             $social_template = $template_files[1];
@@ -121,7 +121,7 @@ class NewsController extends Controller
         }
         $html = view($social_template, data:
             compact('image_url', 'title', 'description', 'category', 'source', 'flag'))->render();
-        // return $html;
+        return $html;
         // Generate image
         Browsershot::html($html)
             // 🚨 CHANGE 1: Use a vertical, mobile-friendly window size (e.g., 900px wide x 1200px high - a 3:4 ratio)
