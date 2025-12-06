@@ -161,6 +161,9 @@ class NewsController extends Controller
                 case 'hatke':
                     $url = "https://inshorts.com/api/hi/search/trending_topics/hatke";
                     break;
+                case 'english_all':
+                    $url = "https://inshorts.com/api/en/news?category=top_stories&include_card_data=true";
+                    break;
                 case 'top_stories':
                     // $url = "https://inshorts.com/api/hi/news?category=top_stories&max_limit=80&include_card_data=true";
                     $url = "https://inshorts.com/api/hi/news?category=top_stories&include_card_data=true";

@@ -29,6 +29,7 @@ class ListNews extends ListRecords
                             'top_stories' => 'Top Stories',
                             'technology' => 'Technology',
                             'hatke' => 'hatke',
+                            'english_all' => 'English - All',
                         ])
                         ->required(),
                 ])

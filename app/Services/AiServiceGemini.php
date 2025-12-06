@@ -106,14 +106,6 @@ class AiServiceGemini
 
     public function summarizeAndSaveInshortHindi($news)
     {
-//         $test = '```json
-// {
-//   "title": "प्रधानमंत्री नरेंद्र मोदी ने दुनिया की सबसे ऊंची 77 फीट की श्रीराम प्रतिमा का अनावरण किया",
-//   "description": "शुक्रवार को प्रधानमंत्री नरेंद्र मोदी ने गोवा में स्थित ऐतिहासिक श्री संस्थान गोकर्ण जीवोत्तम मठ में भगवान श्रीराम की उस प्रतिमा का अनावरण किया, जो विश्व में सबसे ऊंची है। इस प्रतिमा की ऊंचाई 77 फीट है, और इसे प्रसिद्ध मूर्तिकार राम सुतार ने कांस्य धातु से निर्मित किया है। प्रधानमंत्री ने इस मठ के 550वें वार्षिक समारोह में भी हिस्सा लिया।"
-// }
-// ```';
-//         $test_response = $this->convertToJsonSafeString($test);
-//         dd($test_response);
 
         $title = $news->response['title'] ?? '';
         $description = $news->response['description'] ?? '';
