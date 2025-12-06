@@ -2,10 +2,10 @@
     $summarize_title = $record->rewritten_title ?? $record->summarize_response_json['title'] ?? '';
     $summarize_description = $record->rewritten_description ?? $record->summarize_response_json['description'] ?? '';
     $source = $record->response['url'] ?? '';
-    if($source){
+    if ($source) {
         $source = "\nSource URL- $source";
     }
-    $copy_data = ($summarize_title ?? '') . " \n\n" . ($summarize_description ?? '')  . $source;
+    $copy_data = ($summarize_title ?? '') . " \n\n" . ($summarize_description ?? '') . $source;
 @endphp
 <div class="w-full block">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -94,42 +94,41 @@
                 </div>
             @endif
             @if(!empty($summarize_title) || !empty($summarize_description))
-                <div class="final-section p-4 border border-gray-300 rounded-lg">
+                            <div class="final-section p-4 border border-gray-300 rounded-lg">
 
-                    <h2 class="text-lg font-bold mb-3">Final (For Posting)</h2>
+                                <h2 class="text-lg font-bold mb-3">Final (For Posting)</h2>
 
-                    {{-- Title (Bold + bigger) --}}
-                    @if(!empty($summarize_title))
-                        <h3 class="text-xl font-semibold mb-2">
-                            {{ $summarize_title }}
-                        </h3>
-                    @endif
+                                {{-- Title (Bold + bigger) --}}
+                                @if(!empty($summarize_title))
+                                    <h3 class="text-xl font-semibold mb-2">
+                                        {{ $summarize_title }}
+                                    </h3>
+                                @endif
 
-                    {{-- Description with spacing + readable formatting --}}
-                    @if(!empty($summarize_description))
-                        <p class="leading-relaxed text-gray-800 mb-4 whitespace-pre-line">
-                            {{ $summarize_description }}
-                        </p>
-                    @endif
-                    {{ $source }}
+                                {{-- Description with spacing + readable formatting --}}
+                                @if(!empty($summarize_description))
+                                    <p class="leading-relaxed text-gray-800 mb-4 whitespace-pre-line">
+                                        {{ $summarize_description }}
+                                    </p>
+                                @endif
+                                {{ $source }}
 
-                    {{-- Copy button --}}
-                    <button x-data x-on:click="navigator.clipboard.writeText($el.dataset.copy)"
-                        data-copy="{{ $copy_data }}"
-                        class="bg-indigo-600 text-white px-4 py-2 rounded w-full text-center"  style="
-    background-color:#4f46e5;
-    color:white;
-    padding:8px 16px;
-    border-radius:6px;
-    width:100%;
-    text-align:center;
-    display:block;
-">
-                        Copy for Facebook/LinkedIn
-                    </button>
+                                {{-- Copy button --}}
+                                <button x-data x-on:click="navigator.clipboard.writeText($el.dataset.copy)" data-copy="{{ $copy_data }}"
+                                    class="bg-indigo-600 text-white px-4 py-2 rounded w-full text-center" style="
+                    background-color:#4f46e5;
+                    color:white;
+                    padding:8px 16px;
+                    border-radius:6px;
+                    width:100%;
+                    text-align:center;
+                    display:block;
+                ">
+                                    Copy for Facebook/LinkedIn
+                                </button>
 
 
-                </div>
+                            </div>
             @endif
 
         </div>

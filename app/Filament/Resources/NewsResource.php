@@ -118,9 +118,9 @@ class NewsResource extends Resource
                         Forms\Components\Select::make('template')
                             ->label('Select Template')
                             ->options([
-                                '0' => 'Social Card 1',
-                                '1' => 'Social Card 2',
-                                '2' => 'Social Card 3',
+                                '0' => 'Social Card 1(Image, (Title & Description)',
+                                '1' => 'Social Card 2 (Only Title)',
+                                '2' => 'Social Card 3 (Image in background)',
                             ])
                             ,
                     ])

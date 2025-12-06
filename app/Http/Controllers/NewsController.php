@@ -218,7 +218,7 @@ class NewsController extends Controller
                     "author" => $news['author_name'] ?? null,
                     "title" => $news['title'] ?? null,
                     "description" => $news['content'] ?? null,
-                    "url" => $source_url,
+                    "url" => $clean_source_url,
                     "source" => $news['source_name'] ?? null,
                     "image" => $news['image_url'] ?? null,
                     "category" => $news['category_names'] ? implode(',', $news['category_names']) : null,
