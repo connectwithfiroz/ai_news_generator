@@ -29,7 +29,7 @@
         }
 
         .header {
-            padding: 1.5rem 2rem;
+            padding: 1rem;
             display: flex;
             justify-content: flex-end;
             /* Logo/Brand on the right */
@@ -50,7 +50,7 @@
 
         .image-container {
             width: 100%;
-            padding: 1.5rem 0;
+            /* padding: 1.5rem 0; */
             /* Vertical spacing */
             display: flex;
             justify-content: center;
@@ -96,12 +96,13 @@
         }
 
         .title {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 900;
             line-height: 1.25;
             color: #ffcc00;
             /* Gold text for the primary title/fact highlight */
             margin-bottom: 0;
+            margin-top: 1rem;
         }
 
         .desc {
