@@ -141,7 +141,8 @@ class NewsController extends Controller
             $news->local_image_path = 'news_images/' . $fileName;
             $news->save();
             //redirect to filament resource
-            return redirect()->route('filament.admin.resources.news.index')->with('success', 'Image generated successfully.');
+            return back()->with('success', 'Image generated successfully.');
+            // return redirect()->route('filament.admin.resources.news.index')->with('success', 'Image generated successfully.');
         }
     }
     // ---------- GENERATE IMAGE USING BROWSERSHOT <<<---------- //
@@ -215,7 +216,8 @@ class NewsController extends Controller
                 //mapped fields
                 // Map NewsAPI fields to Mediastack-style fields
                 $source_url = $news['source_url'] ?? null;
-                $clean_source_url = strtok($source_url, '?');
+                $clean_source_url = str_replace('inshort', 'https://www.facebook.com/profile.php?id=61584585003545', $source_url) ;
+                // $clean_source_url = strtok($source_url, '?');
                 $mapped = [
                     "unique_id" => $news['hash_id'] ?? null,
                     "author" => $news['author_name'] ?? null,

@@ -91,7 +91,7 @@
             /* Extra large font for viral impact */
             font-weight: 900;
             line-height: 1.1;
-            color: #fff;
+            color: #ffcc00;
             text-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.8);
             /* Strong shadow for visibility */
             text-transform: uppercase;
